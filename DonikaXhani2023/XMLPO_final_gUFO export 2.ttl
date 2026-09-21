@@ -1,0 +1,2414 @@
+@prefix : <http://example.com#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.com> .
+
+<http://example.com> rdf:type owl:Ontology ;
+                      owl:imports gufo: .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.com#datasetHasData
+:datasetHasData rdf:type owl:ObjectProperty ;
+                rdfs:domain :Dataset ;
+                rdfs:range :Data .
+
+
+###  http://example.com#datasetHasFeature
+:datasetHasFeature rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Dataset ;
+                   rdfs:range :Feature .
+
+
+###  http://example.com#datasetSplitHasTest
+:datasetSplitHasTest rdf:type owl:ObjectProperty ;
+                     rdfs:domain :DatasetSplit ;
+                     rdfs:range :Test .
+
+
+###  http://example.com#datasetSplitHasTrain
+:datasetSplitHasTrain rdf:type owl:ObjectProperty ;
+                      rdfs:domain :DatasetSplit ;
+                      rdfs:range :Train .
+
+
+###  http://example.com#explanationEvaluationHasExplanationFormatEvaluation
+:explanationEvaluationHasExplanationFormatEvaluation rdf:type owl:ObjectProperty ;
+                                                     rdfs:domain :ExplanationEvaluation ;
+                                                     rdfs:range :ExplanationFormatEvaluation .
+
+
+###  http://example.com#explanationEvaluationHasXaiEvaluationMetric
+:explanationEvaluationHasXaiEvaluationMetric rdf:type owl:ObjectProperty ;
+                                             rdfs:domain :ExplanationEvaluation ;
+                                             rdfs:range :XAIEvaluationMetric .
+
+
+###  http://example.com#explanationHasExplanationApproach
+:explanationHasExplanationApproach rdf:type owl:ObjectProperty ;
+                                   rdfs:domain :Explanation ;
+                                   rdfs:range :ExplanationApproach .
+
+
+###  http://example.com#explanationHasExplanationFormat
+:explanationHasExplanationFormat rdf:type owl:ObjectProperty ;
+                                 rdfs:domain :Explanation ;
+                                 rdfs:range :ExplanationFormat .
+
+
+###  http://example.com#preprocessingAlgorithmHasDataCleaning
+:preprocessingAlgorithmHasDataCleaning rdf:type owl:ObjectProperty ;
+                                       rdfs:domain :PreprocessingAlgorithm ;
+                                       rdfs:range :DataCleaning .
+
+
+###  http://purl.org/nemo/gufo#inheresIn
+gufo:inheresIn rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/nemo/gufo#isEventProperPartOf
+gufo:isEventProperPartOf rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/nemo/gufo#mediates
+gufo:mediates rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/nemo/gufo#participatedIn
+gufo:participatedIn rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/nemo/gufo#wasCreatedIn
+gufo:wasCreatedIn rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.com#ModelCharacteristic
+:ModelCharacteristic rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :XAIModel ;
+                     rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.com#Addresses
+:Addresses rdf:type owl:Class ;
+           rdfs:subClassOf gufo:Relator ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty gufo:mediates ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Goal
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty gufo:mediates ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :MLAlgorithm
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty gufo:mediates ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :MLAlgorithm_1
+                           ] .
+
+
+###  http://example.com#Algorithm
+:Algorithm rdf:type owl:Class ;
+           rdfs:subClassOf gufo:FunctionalComplex ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                            ] ;
+                             owl:someValuesFrom :AlgorithmCharacteristic
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty gufo:inheresIn ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :AlgorithmCharacteristic
+                           ] .
+
+
+###  http://example.com#AlgorithmCharacteristic
+:AlgorithmCharacteristic rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:Quality ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty gufo:inheresIn ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :Algorithm
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                          ] ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :Algorithm
+                                         ] .
+
+
+###  http://example.com#AntehocAprroach
+:AntehocAprroach rdf:type owl:Class ;
+                 rdfs:subClassOf :ExplanationApproach .
+
+
+###  http://example.com#AntehocImplementation
+:AntehocImplementation rdf:type owl:Class ;
+                       rdfs:subClassOf :Implementation ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                        ] ;
+                                         owl:someValuesFrom :AntehocAprroach
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                        ] ;
+                                         owl:someValuesFrom :MLModel
+                                       ] .
+
+
+###  http://example.com#Assesses
+:Assesses rdf:type owl:Class ;
+          rdfs:subClassOf gufo:Relator ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty gufo:mediates ;
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :MLModel
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty gufo:mediates ;
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :ModelEvaluationTechnique
+                          ] .
+
+
+###  http://example.com#BlackboxMLmodel
+:BlackboxMLmodel rdf:type owl:Class ;
+                 rdfs:subClassOf :MLModel ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty gufo:mediates ;
+                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :Vizualization
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                                  ] ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :MLModelImplementation
+                                 ] .
+
+
+###  http://example.com#CategoricalFeature
+:CategoricalFeature rdf:type owl:Class ;
+                    rdfs:subClassOf :Feature .
+
+
+###  http://example.com#ClassPredictionEvaluationMeasure
+:ClassPredictionEvaluationMeasure rdf:type owl:Class ;
+                                  rdfs:subClassOf :PredictiveModelEvaluationMeasure .
+
+
+###  http://example.com#ClassificationAlgorithm
+:ClassificationAlgorithm rdf:type owl:Class ;
+                         rdfs:subClassOf :SupervisedLearningApproach .
+
+
+###  http://example.com#ClusteringAlgorithm
+:ClusteringAlgorithm rdf:type owl:Class ;
+                     rdfs:subClassOf :UnsupervisedLearningApproach .
+
+
+###  http://example.com#ClusteringEvaluationMeasure
+:ClusteringEvaluationMeasure rdf:type owl:Class ;
+                             rdfs:subClassOf :ModelEvaluationTechnique .
+
+
+###  http://example.com#Correlates
+:Correlates rdf:type owl:Class ;
+            rdfs:subClassOf gufo:Relator ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                             ] ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :CorrelationCharacteristic
+                            ] .
+
+
+###  http://example.com#CorrelationCharacteristic
+:CorrelationCharacteristic rdf:type owl:Class ;
+                           rdfs:subClassOf gufo:Quality ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty gufo:inheresIn ;
+                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onClass :Correlates
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                            ] ;
+                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onClass :CorrelationCoefficient
+                                           ] .
+
+
+###  http://example.com#CorrelationCoefficient
+:CorrelationCoefficient rdf:type owl:Class ;
+                        rdfs:subClassOf :NumericalPredictionEvaluationMeasure ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty gufo:inheresIn ;
+                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :CorrelationCharacteristic
+                                        ] .
+
+
+###  http://example.com#Data
+:Data rdf:type owl:Class ;
+      rdfs:subClassOf gufo:FunctionalComplex ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                       ] ;
+                        owl:someValuesFrom :DataCharacteristic
+                      ] .
+
+
+###  http://example.com#DataCharacteristic
+:DataCharacteristic rdf:type owl:Class ;
+                    rdfs:subClassOf gufo:Quality ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty gufo:inheresIn ;
+                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Data
+                                    ] .
+
+
+###  http://example.com#DataCleaning
+:DataCleaning rdf:type owl:Class ;
+              rdfs:subClassOf gufo:Event ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty gufo:inheresIn ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :DataCleaningCharacteristic
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty gufo:isEventProperPartOf ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :DropFeaturesrows
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty gufo:isEventProperPartOf ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :ImputeMissingvalues
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty gufo:wasCreatedIn ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :ProcessedData
+                              ] .
+
+
+###  http://example.com#DataCleaningCharacteristic
+:DataCleaningCharacteristic rdf:type owl:Class ;
+                            rdfs:subClassOf gufo:Quality ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                             ] ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onClass :DataCleaning
+                                            ] .
+
+
+###  http://example.com#Dataset
+:Dataset rdf:type owl:Class ;
+         rdfs:subClassOf gufo:FunctionalComplex ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty gufo:inheresIn ;
+                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :DatasetCharacteristic
+                         ] .
+
+
+###  http://example.com#DatasetCharacteristic
+:DatasetCharacteristic rdf:type owl:Class ;
+                       rdfs:subClassOf gufo:Quality ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                        ] ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :Dataset
+                                       ] .
+
+
+###  http://example.com#DatasetSplit
+:DatasetSplit rdf:type owl:Class ;
+              rdfs:subClassOf gufo:Event ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                               ] ;
+                                owl:someValuesFrom :Algorithm
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                               ] ;
+                                owl:someValuesFrom :Dataset
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                               ] ;
+                                owl:someValuesFrom :ProcessedData
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                               ] ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :TestSet
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                               ] ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :TrainSet
+                              ] .
+
+
+###  http://example.com#DependentFeature
+:DependentFeature rdf:type owl:Class ;
+                  rdfs:subClassOf :Feature .
+
+
+###  http://example.com#DropFeaturesrows
+:DropFeaturesrows rdf:type owl:Class ;
+                  rdfs:subClassOf gufo:Event ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf
+                                                   ] ;
+                                    owl:someValuesFrom :DataCleaning
+                                  ] .
+
+
+###  http://example.com#DummyEnconding
+:DummyEnconding rdf:type owl:Class ;
+                rdfs:subClassOf :FeatureEncondingTechnique .
+
+
+###  http://example.com#DummyFeature
+:DummyFeature rdf:type owl:Class ;
+              rdfs:subClassOf :Feature ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                               ] ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :FeatureEnconding
+                              ] .
+
+
+###  http://example.com#ErrorBasedEvaluationMeasure
+:ErrorBasedEvaluationMeasure rdf:type owl:Class ;
+                             rdfs:subClassOf :NumericalPredictionEvaluationMeasure .
+
+
+###  http://example.com#EvaluatesExplanationFormat
+:EvaluatesExplanationFormat rdf:type owl:Class ;
+                            rdfs:subClassOf gufo:Relator ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty gufo:mediates ;
+                                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onClass :ExplanationFormatEvaluation
+                                            ] .
+
+
+###  http://example.com#EvaluationMeasure
+:EvaluationMeasure rdf:type owl:Class ;
+                   rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#EvaluationProcedure
+:EvaluationProcedure rdf:type owl:Class ;
+                     rdfs:subClassOf :Algorithm .
+
+
+###  http://example.com#Experiment
+:Experiment rdf:type owl:Class ;
+            rdfs:subClassOf gufo:Event ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                             ] ;
+                              owl:someValuesFrom :ExperimentCharacteristic
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf
+                                             ] ;
+                              owl:someValuesFrom :Workflow
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                             ] ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Goal
+                            ] .
+
+
+###  http://example.com#ExperimentCharacteristic
+:ExperimentCharacteristic rdf:type owl:Class ;
+                          rdfs:subClassOf gufo:Quality ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty gufo:inheresIn ;
+                                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass :Experiment
+                                          ] .
+
+
+###  http://example.com#Explain
+:Explain rdf:type owl:Class ;
+         rdfs:subClassOf gufo:Event ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                          ] ;
+                           owl:someValuesFrom :Explanation
+                         ] .
+
+
+###  http://example.com#Explanation
+:Explanation rdf:type owl:Class ;
+             rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#ExplanationApproach
+:ExplanationApproach rdf:type owl:Class ;
+                     rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#ExplanationEvaluation
+:ExplanationEvaluation rdf:type owl:Class ;
+                       rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#ExplanationFormat
+:ExplanationFormat rdf:type owl:Class ;
+                   rdfs:subClassOf gufo:FunctionalComplex ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty gufo:mediates ;
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :EvaluatesExplanationFormat
+                                   ] .
+
+
+###  http://example.com#ExplanationFormatEvaluation
+:ExplanationFormatEvaluation rdf:type owl:Class ;
+                             rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#ExplanationScope
+:ExplanationScope rdf:type owl:Class ;
+                  rdfs:subClassOf :Explanation .
+
+
+###  http://example.com#Feature
+:Feature rdf:type owl:Class ;
+         rdfs:subClassOf gufo:FunctionalComplex ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty gufo:inheresIn ;
+                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :FeatureCharacteristic
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty gufo:mediates ;
+                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Correlates
+                         ] .
+
+
+###  http://example.com#FeatureCharacteristic
+:FeatureCharacteristic rdf:type owl:Class ;
+                       rdfs:subClassOf gufo:Quality ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                        ] ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :Feature
+                                       ] .
+
+
+###  http://example.com#FeatureEncodingCharacteristic
+:FeatureEncodingCharacteristic rdf:type owl:Class ;
+                               rdfs:subClassOf gufo:Quality ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                                ] ;
+                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                 owl:onClass :FeatureEnconding
+                                               ] .
+
+
+###  http://example.com#FeatureEnconding
+:FeatureEnconding rdf:type owl:Class ;
+                  rdfs:subClassOf gufo:Event ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                   ] ;
+                                    owl:someValuesFrom :Algorithm
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                   ] ;
+                                    owl:someValuesFrom :CategoricalFeature
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                   ] ;
+                                    owl:someValuesFrom :FeatureEncondingTechnique
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty gufo:inheresIn ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :FeatureEncodingCharacteristic
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty gufo:wasCreatedIn ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :DummyFeature
+                                  ] .
+
+
+###  http://example.com#FeatureEncondingTechnique
+:FeatureEncondingTechnique rdf:type owl:Class ;
+                           rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#FeatureScaledData
+:FeatureScaledData rdf:type owl:Class ;
+                   rdfs:subClassOf :Data ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty gufo:wasCreatedIn ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :FeatureScaling
+                                   ] .
+
+
+###  http://example.com#FeatureScaling
+:FeatureScaling rdf:type owl:Class ;
+                rdfs:subClassOf gufo:Event ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                 ] ;
+                                  owl:someValuesFrom :Algorithm
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                 ] ;
+                                  owl:someValuesFrom :Feature
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                 ] ;
+                                  owl:someValuesFrom :FeatureScalingTechnique
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                                 ] ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :FeatureScaledData
+                                ] .
+
+
+###  http://example.com#FeatureScalingTechnique
+:FeatureScalingTechnique rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#GlobalExplanation
+:GlobalExplanation rdf:type owl:Class ;
+                   rdfs:subClassOf :ExplanationScope .
+
+
+###  http://example.com#Goal
+:Goal rdf:type owl:Class ;
+      rdfs:subClassOf gufo:FunctionalComplex ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty gufo:participatedIn ;
+                        owl:someValuesFrom :Experiment
+                      ] .
+
+
+###  http://example.com#GraphicalEvaluationMeasure
+:GraphicalEvaluationMeasure rdf:type owl:Class ;
+                            rdfs:subClassOf :PredictiveModelEvaluationMeasure .
+
+
+###  http://example.com#Graphs
+:Graphs rdf:type owl:Class ;
+        rdfs:subClassOf :ModelVisualization .
+
+
+###  http://example.com#HasParameter
+:HasParameter rdf:type owl:Class ;
+              rdfs:subClassOf gufo:Relator ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty gufo:mediates ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :Implementation
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty gufo:mediates ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :Parameter
+                              ] .
+
+
+###  http://example.com#Image
+:Image rdf:type owl:Class ;
+       rdfs:subClassOf :ModelVisualization .
+
+
+###  http://example.com#Implementation
+:Implementation rdf:type owl:Class ;
+                rdfs:subClassOf gufo:Event ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                 ] ;
+                                  owl:someValuesFrom :ImplementationCharacteristic
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                 ] ;
+                                  owl:someValuesFrom :Software
+                                ] .
+
+
+###  http://example.com#ImplementationCharacteristic
+:ImplementationCharacteristic rdf:type owl:Class ;
+                              rdfs:subClassOf gufo:Quality ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty gufo:inheresIn ;
+                                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                owl:onClass :Implementation
+                                              ] .
+
+
+###  http://example.com#Implements
+:Implements rdf:type owl:Class ;
+            rdfs:subClassOf gufo:Relator ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty gufo:mediates ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Algorithm
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty gufo:mediates ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Implementation
+                            ] .
+
+
+###  http://example.com#ImportLibraries
+:ImportLibraries rdf:type owl:Class ;
+                 rdfs:subClassOf gufo:Event ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                  ] ;
+                                   owl:someValuesFrom :Library
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty gufo:inheresIn ;
+                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :LibraryCharacteristic
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty gufo:isEventProperPartOf ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :MLModelImplementation
+                                 ] .
+
+
+###  http://example.com#ImputationCharacteristics
+:ImputationCharacteristics rdf:type owl:Class ;
+                           rdfs:subClassOf gufo:Quality ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                            ] ;
+                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onClass :ImputeMissingvalues
+                                           ] .
+
+
+###  http://example.com#ImputeMissingvalues
+:ImputeMissingvalues rdf:type owl:Class ;
+                     rdfs:subClassOf gufo:Event ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf
+                                                      ] ;
+                                       owl:someValuesFrom :DataCleaning
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty gufo:inheresIn ;
+                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :ImputationCharacteristics
+                                     ] .
+
+
+###  http://example.com#IndependentFeature
+:IndependentFeature rdf:type owl:Class ;
+                    rdfs:subClassOf :Feature .
+
+
+###  http://example.com#InformationCriteria
+:InformationCriteria rdf:type owl:Class ;
+                     rdfs:subClassOf :NumericalPredictionEvaluationMeasure .
+
+
+###  http://example.com#LabeledDataset
+:LabeledDataset rdf:type owl:Class ;
+                rdfs:subClassOf :Dataset .
+
+
+###  http://example.com#Library
+:Library rdf:type owl:Class ;
+         rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#LibraryCharacteristic
+:LibraryCharacteristic rdf:type owl:Class ;
+                       rdfs:subClassOf gufo:Quality ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                        ] ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :ImportLibraries
+                                       ] .
+
+
+###  http://example.com#LocalExplanation
+:LocalExplanation rdf:type owl:Class ;
+                  rdfs:subClassOf :ExplanationScope .
+
+
+###  http://example.com#MLAlgorithm
+:MLAlgorithm rdf:type owl:Class ;
+             rdfs:subClassOf :Algorithm .
+
+
+###  http://example.com#MLAlgorithm_1
+:MLAlgorithm_1 rdf:type owl:Class ;
+               rdfs:subClassOf :Algorithm .
+
+
+###  http://example.com#MLApproach
+:MLApproach rdf:type owl:Class ;
+            rdfs:subClassOf gufo:FunctionalComplex ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty gufo:inheresIn ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :MLApproachCharacteristic
+                            ] .
+
+
+###  http://example.com#MLApproachCharacteristic
+:MLApproachCharacteristic rdf:type owl:Class ;
+                          rdfs:subClassOf gufo:Quality ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                           ] ;
+                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass :MLApproach
+                                          ] .
+
+
+###  http://example.com#MLModel
+:MLModel rdf:type owl:Class ;
+         rdfs:subClassOf :Output ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                          ] ;
+                           owl:someValuesFrom :ModelCharacteristic
+                         ] .
+
+
+###  http://example.com#MLModelEvaluation
+:MLModelEvaluation rdf:type owl:Class ;
+                   rdfs:subClassOf gufo:Event ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                    ] ;
+                                     owl:someValuesFrom :BlackboxMLmodel
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                    ] ;
+                                     owl:someValuesFrom :ModelEvaluationTechnique
+                                   ] .
+
+
+###  http://example.com#MLModelImplementation
+:MLModelImplementation rdf:type owl:Class ;
+                       rdfs:subClassOf :Implementation ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf
+                                                        ] ;
+                                         owl:someValuesFrom :ImportLibraries
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf
+                                                        ] ;
+                                         owl:someValuesFrom :Test
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf
+                                                        ] ;
+                                         owl:someValuesFrom :Train
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                        ] ;
+                                         owl:someValuesFrom :MLModel
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty gufo:wasCreatedIn ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :BlackboxMLmodel
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty gufo:wasCreatedIn ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :Result
+                                       ] .
+
+
+###  http://example.com#ModelCharacteristic
+:ModelCharacteristic rdf:type owl:Class ;
+                     rdfs:subClassOf gufo:Quality ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty gufo:inheresIn ;
+                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :MLModel
+                                     ] .
+
+
+###  http://example.com#ModelEvaluationCharacteristic
+:ModelEvaluationCharacteristic rdf:type owl:Class ;
+                               rdfs:subClassOf gufo:Quality ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty gufo:inheresIn ;
+                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                 owl:onClass :SpecifiesModelEvaluation
+                                               ] .
+
+
+###  http://example.com#ModelEvaluationTechnique
+:ModelEvaluationTechnique rdf:type owl:Class ;
+                          rdfs:subClassOf :Output .
+
+
+###  http://example.com#ModelVisualization
+:ModelVisualization rdf:type owl:Class ;
+                    rdfs:subClassOf gufo:FunctionalComplex ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty gufo:mediates ;
+                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Vizualization
+                                    ] .
+
+
+###  http://example.com#NormalizationTechnique
+:NormalizationTechnique rdf:type owl:Class ;
+                        rdfs:subClassOf :FeatureScalingTechnique .
+
+
+###  http://example.com#NumericalExplanation
+:NumericalExplanation rdf:type owl:Class ;
+                      rdfs:subClassOf :ExplanationFormat .
+
+
+###  http://example.com#NumericalFeature
+:NumericalFeature rdf:type owl:Class ;
+                  rdfs:subClassOf :Feature .
+
+
+###  http://example.com#NumericalPredictionEvaluationMeasure
+:NumericalPredictionEvaluationMeasure rdf:type owl:Class ;
+                                      rdfs:subClassOf :PredictiveModelEvaluationMeasure .
+
+
+###  http://example.com#Operation
+:Operation rdf:type owl:Class ;
+           rdfs:subClassOf gufo:Event ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty gufo:isEventProperPartOf ;
+                             owl:someValuesFrom :Workflow
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                            ] ;
+                             owl:someValuesFrom :Dataset
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                            ] ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Implementation
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                            ] ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Output
+                           ] .
+
+
+###  http://example.com#Output
+:Output rdf:type owl:Class ;
+        rdfs:subClassOf gufo:FunctionalComplex ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty gufo:wasCreatedIn ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Operation
+                        ] .
+
+
+###  http://example.com#Pandas
+:Pandas rdf:type owl:Class ;
+        rdfs:subClassOf :PythonLibrary .
+
+
+###  http://example.com#Parameter
+:Parameter rdf:type owl:Class ;
+           rdfs:subClassOf gufo:FunctionalComplex ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty [ owl:inverseOf gufo:mediates
+                                            ] ;
+                             owl:someValuesFrom :HasParameter
+                           ] .
+
+
+###  http://example.com#ParameterCharacteristic
+:ParameterCharacteristic rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:Quality ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty gufo:inheresIn ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :ParameterSetting
+                                         ] .
+
+
+###  http://example.com#ParameterSetting
+:ParameterSetting rdf:type owl:Class ;
+                  rdfs:subClassOf gufo:FunctionalComplex ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty gufo:participatedIn ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :Operation
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                   ] ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :ParameterCharacteristic
+                                  ] .
+
+
+###  http://example.com#PosthocApproach
+:PosthocApproach rdf:type owl:Class ;
+                 rdfs:subClassOf :ExplanationApproach .
+
+
+###  http://example.com#PosthocImplementation
+:PosthocImplementation rdf:type owl:Class ;
+                       rdfs:subClassOf :Implementation ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                        ] ;
+                                         owl:someValuesFrom :BlackboxMLmodel
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                        ] ;
+                                         owl:someValuesFrom :PosthocApproach
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty gufo:wasCreatedIn ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :XAIModel
+                                       ] .
+
+
+###  http://example.com#PredictiveModelEvaluationMeasure
+:PredictiveModelEvaluationMeasure rdf:type owl:Class ;
+                                  rdfs:subClassOf :ModelEvaluationTechnique .
+
+
+###  http://example.com#PreprocessingAlgorithm
+:PreprocessingAlgorithm rdf:type owl:Class ;
+                        rdfs:subClassOf :Algorithm .
+
+
+###  http://example.com#ProcessedData
+:ProcessedData rdf:type owl:Class ;
+               rdfs:subClassOf :Data ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                                ] ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :DataCleaning
+                               ] .
+
+
+###  http://example.com#PythonLibrary
+:PythonLibrary rdf:type owl:Class ;
+               rdfs:subClassOf :Library .
+
+
+###  http://example.com#RegressionAlgorithm
+:RegressionAlgorithm rdf:type owl:Class ;
+                     rdfs:subClassOf :SupervisedLearningApproach .
+
+
+###  http://example.com#Result
+:Result rdf:type owl:Class ;
+        rdfs:subClassOf :Output ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                         ] ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :MLModelImplementation
+                        ] .
+
+
+###  http://example.com#RulesExplanation
+:RulesExplanation rdf:type owl:Class ;
+                  rdfs:subClassOf :ExplanationFormat .
+
+
+###  http://example.com#ScikitLearn
+:ScikitLearn rdf:type owl:Class ;
+             rdfs:subClassOf :PythonLibrary .
+
+
+###  http://example.com#Software
+:Software rdf:type owl:Class ;
+          rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#SpecifiesMeasure
+:SpecifiesMeasure rdf:type owl:Class ;
+                  rdfs:subClassOf gufo:Relator ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty gufo:mediates ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :EvaluationMeasure
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty gufo:mediates ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :Goal
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty gufo:mediates ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :MLApproach
+                                  ] .
+
+
+###  http://example.com#SpecifiesModelEvaluation
+:SpecifiesModelEvaluation rdf:type owl:Class ;
+                          rdfs:subClassOf gufo:Relator ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                           ] ;
+                                            owl:someValuesFrom :ModelEvaluationCharacteristic
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty gufo:mediates ;
+                                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass :EvaluationMeasure
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty gufo:mediates ;
+                                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass :ModelEvaluationTechnique
+                                          ] .
+
+
+###  http://example.com#SpecifiesParameter
+:SpecifiesParameter rdf:type owl:Class ;
+                    rdfs:subClassOf gufo:Relator ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty gufo:mediates ;
+                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Parameter
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty gufo:mediates ;
+                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :ParameterSetting
+                                    ] .
+
+
+###  http://example.com#StandardizationTechnique
+:StandardizationTechnique rdf:type owl:Class ;
+                          rdfs:subClassOf :FeatureScalingTechnique .
+
+
+###  http://example.com#SupervisedLearningApproach
+:SupervisedLearningApproach rdf:type owl:Class ;
+                            rdfs:subClassOf :MLApproach .
+
+
+###  http://example.com#SupervisedLearningApproachImplemenation
+:SupervisedLearningApproachImplemenation rdf:type owl:Class ;
+                                         rdfs:subClassOf :Implementation ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                                          ] ;
+                                                           owl:someValuesFrom :LabeledDataset
+                                                         ] ,
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                                          ] ;
+                                                           owl:someValuesFrom :SupervisedLearningApproach
+                                                         ] .
+
+
+###  http://example.com#TargetEnconding
+:TargetEnconding rdf:type owl:Class ;
+                 rdfs:subClassOf :FeatureEncondingTechnique .
+
+
+###  http://example.com#Test
+:Test rdf:type owl:Class ;
+      rdfs:subClassOf gufo:Event ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty gufo:isEventProperPartOf ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :MLModelImplementation
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty gufo:wasCreatedIn ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :TestSet
+                      ] .
+
+
+###  http://example.com#TestSet
+:TestSet rdf:type owl:Class ;
+         rdfs:subClassOf :ProcessedData ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty gufo:wasCreatedIn ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :DatasetSplit
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                          ] ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Test
+                         ] .
+
+
+###  http://example.com#TextualExplanation
+:TextualExplanation rdf:type owl:Class ;
+                    rdfs:subClassOf :ExplanationFormat .
+
+
+###  http://example.com#Train
+:Train rdf:type owl:Class ;
+       rdfs:subClassOf gufo:Event ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty gufo:isEventProperPartOf ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :MLModelImplementation
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty gufo:wasCreatedIn ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :TrainSet
+                       ] .
+
+
+###  http://example.com#TrainSet
+:TrainSet rdf:type owl:Class ;
+          rdfs:subClassOf :ProcessedData ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty gufo:wasCreatedIn ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :DatasetSplit
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                           ] ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Train
+                          ] .
+
+
+###  http://example.com#UncleanedData
+:UncleanedData rdf:type owl:Class ;
+               rdfs:subClassOf :Data ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                ] ;
+                                 owl:someValuesFrom :DataCleaning
+                               ] .
+
+
+###  http://example.com#UnlabeledDataset
+:UnlabeledDataset rdf:type owl:Class ;
+                  rdfs:subClassOf :Dataset .
+
+
+###  http://example.com#UnsupervisedLearningApproach
+:UnsupervisedLearningApproach rdf:type owl:Class ;
+                              rdfs:subClassOf :MLApproach .
+
+
+###  http://example.com#UnsupervisedLearningApproachImplemenation
+:UnsupervisedLearningApproachImplemenation rdf:type owl:Class ;
+                                           rdfs:subClassOf :Implementation ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                                            ] ;
+                                                             owl:someValuesFrom :UnlabeledDataset
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                                            ] ;
+                                                             owl:someValuesFrom :UnsupervisedLearningApproach
+                                                           ] .
+
+
+###  http://example.com#VisualExplanation
+:VisualExplanation rdf:type owl:Class ;
+                   rdfs:subClassOf :ExplanationFormat .
+
+
+###  http://example.com#Vizualization
+:Vizualization rdf:type owl:Class ;
+               rdfs:subClassOf gufo:Relator ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty gufo:inheresIn ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :VizualizationCharacteristic
+                               ] .
+
+
+###  http://example.com#VizualizationCharacteristic
+:VizualizationCharacteristic rdf:type owl:Class ;
+                             rdfs:subClassOf gufo:Quality ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                              ] ;
+                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :Vizualization
+                                             ] .
+
+
+###  http://example.com#Workflow
+:Workflow rdf:type owl:Class ;
+          rdfs:subClassOf gufo:Event ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty gufo:isEventProperPartOf ;
+                            owl:someValuesFrom :Experiment
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf
+                                           ] ;
+                            owl:someValuesFrom :Operation
+                          ] .
+
+
+###  http://example.com#XAIEvaluationMetric
+:XAIEvaluationMetric rdf:type owl:Class ;
+                     rdfs:subClassOf gufo:FunctionalComplex ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                      ] ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :XAIMetricCharacteristic
+                                     ] .
+
+
+###  http://example.com#XAIMetricCharacteristic
+:XAIMetricCharacteristic rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:Quality ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty gufo:inheresIn ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :XAIEvaluationMetric
+                                         ] .
+
+
+###  http://example.com#XAIModel
+:XAIModel rdf:type owl:Class ;
+          rdfs:subClassOf gufo:FunctionalComplex ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                           ] ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :XAIModelCharacteristic
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                           ] ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :PosthocImplementation
+                          ] .
+
+
+###  http://example.com#XAIModelCharacteristic
+:XAIModelCharacteristic rdf:type owl:Class ;
+                        rdfs:subClassOf gufo:Quality ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty gufo:inheresIn ;
+                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :XAIModel
+                                        ] .
+
+
+###  http://example.com#XAIModelEvaluation
+:XAIModelEvaluation rdf:type owl:Class ;
+                    rdfs:subClassOf gufo:Event ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                     ] ;
+                                      owl:someValuesFrom :XAIEvaluationMetric
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                     ] ;
+                                      owl:someValuesFrom :XAIModel
+                                    ] .
+
+
+###  http://purl.org/nemo/gufo#Category
+gufo:Category rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#Event
+gufo:Event rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#EventType
+gufo:EventType rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#FunctionalComplex
+gufo:FunctionalComplex rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#Kind
+gufo:Kind rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#Phase
+gufo:Phase rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#Quality
+gufo:Quality rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#Relator
+gufo:Relator rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#Role
+gufo:Role rdf:type owl:Class .
+
+
+###  http://purl.org/nemo/gufo#SubKind
+gufo:SubKind rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.com#Addresses
+:Addresses rdf:type owl:NamedIndividual ,
+                    gufo:Kind .
+
+
+###  http://example.com#Algorithm
+:Algorithm rdf:type owl:NamedIndividual ,
+                    gufo:Kind .
+
+
+###  http://example.com#AlgorithmCharacteristic
+:AlgorithmCharacteristic rdf:type owl:NamedIndividual ,
+                                  gufo:Kind .
+
+
+###  http://example.com#AntehocAprroach
+:AntehocAprroach rdf:type owl:NamedIndividual ,
+                          gufo:SubKind .
+
+
+###  http://example.com#AntehocImplementation
+:AntehocImplementation rdf:type owl:NamedIndividual ,
+                                gufo:EventType .
+
+
+###  http://example.com#Assesses
+:Assesses rdf:type owl:NamedIndividual ,
+                   gufo:Kind .
+
+
+###  http://example.com#BlackboxMLmodel
+:BlackboxMLmodel rdf:type owl:NamedIndividual ,
+                          gufo:SubKind .
+
+
+###  http://example.com#CategoricalFeature
+:CategoricalFeature rdf:type owl:NamedIndividual ,
+                             gufo:SubKind .
+
+
+###  http://example.com#ClassPredictionEvaluationMeasure
+:ClassPredictionEvaluationMeasure rdf:type owl:NamedIndividual ,
+                                           gufo:SubKind .
+
+
+###  http://example.com#ClassificationAlgorithm
+:ClassificationAlgorithm rdf:type owl:NamedIndividual ,
+                                  gufo:SubKind .
+
+
+###  http://example.com#ClusteringAlgorithm
+:ClusteringAlgorithm rdf:type owl:NamedIndividual ,
+                              gufo:SubKind .
+
+
+###  http://example.com#ClusteringEvaluationMeasure
+:ClusteringEvaluationMeasure rdf:type owl:NamedIndividual ,
+                                      gufo:SubKind .
+
+
+###  http://example.com#Correlates
+:Correlates rdf:type owl:NamedIndividual ,
+                     gufo:Kind .
+
+
+###  http://example.com#CorrelationCharacteristic
+:CorrelationCharacteristic rdf:type owl:NamedIndividual ,
+                                    gufo:Kind .
+
+
+###  http://example.com#CorrelationCoefficient
+:CorrelationCoefficient rdf:type owl:NamedIndividual ,
+                                 gufo:SubKind .
+
+
+###  http://example.com#Data
+:Data rdf:type owl:NamedIndividual ,
+               gufo:Kind .
+
+
+###  http://example.com#DataCharacteristic
+:DataCharacteristic rdf:type owl:NamedIndividual ,
+                             gufo:Kind .
+
+
+###  http://example.com#DataCleaning
+:DataCleaning rdf:type owl:NamedIndividual ,
+                       gufo:EventType .
+
+
+###  http://example.com#DataCleaningCharacteristic
+:DataCleaningCharacteristic rdf:type owl:NamedIndividual ,
+                                     gufo:Kind .
+
+
+###  http://example.com#Dataset
+:Dataset rdf:type owl:NamedIndividual ,
+                  gufo:Kind .
+
+
+###  http://example.com#DatasetCharacteristic
+:DatasetCharacteristic rdf:type owl:NamedIndividual ,
+                                gufo:Kind .
+
+
+###  http://example.com#DatasetSplit
+:DatasetSplit rdf:type owl:NamedIndividual ,
+                       gufo:EventType .
+
+
+###  http://example.com#DependentFeature
+:DependentFeature rdf:type owl:NamedIndividual ,
+                           gufo:Role .
+
+
+###  http://example.com#DropFeaturesrows
+:DropFeaturesrows rdf:type owl:NamedIndividual ,
+                           gufo:EventType .
+
+
+###  http://example.com#DummyEnconding
+:DummyEnconding rdf:type owl:NamedIndividual ,
+                         gufo:Role .
+
+
+###  http://example.com#DummyFeature
+:DummyFeature rdf:type owl:NamedIndividual ,
+                       gufo:SubKind .
+
+
+###  http://example.com#ErrorBasedEvaluationMeasure
+:ErrorBasedEvaluationMeasure rdf:type owl:NamedIndividual ,
+                                      gufo:SubKind .
+
+
+###  http://example.com#EvaluatesExplanationFormat
+:EvaluatesExplanationFormat rdf:type owl:NamedIndividual ,
+                                     gufo:Kind .
+
+
+###  http://example.com#EvaluationMeasure
+:EvaluationMeasure rdf:type owl:NamedIndividual ,
+                            gufo:Kind .
+
+
+###  http://example.com#EvaluationProcedure
+:EvaluationProcedure rdf:type owl:NamedIndividual ,
+                              gufo:SubKind .
+
+
+###  http://example.com#Experiment
+:Experiment rdf:type owl:NamedIndividual ,
+                     gufo:EventType .
+
+
+###  http://example.com#ExperimentCharacteristic
+:ExperimentCharacteristic rdf:type owl:NamedIndividual ,
+                                   gufo:Kind .
+
+
+###  http://example.com#Explain
+:Explain rdf:type owl:NamedIndividual ,
+                  gufo:EventType .
+
+
+###  http://example.com#Explanation
+:Explanation rdf:type owl:NamedIndividual ,
+                      gufo:Category .
+
+
+###  http://example.com#ExplanationApproach
+:ExplanationApproach rdf:type owl:NamedIndividual ,
+                              gufo:Kind .
+
+
+###  http://example.com#ExplanationEvaluation
+:ExplanationEvaluation rdf:type owl:NamedIndividual ,
+                                gufo:Kind .
+
+
+###  http://example.com#ExplanationFormat
+:ExplanationFormat rdf:type owl:NamedIndividual ,
+                            gufo:Kind .
+
+
+###  http://example.com#ExplanationFormatEvaluation
+:ExplanationFormatEvaluation rdf:type owl:NamedIndividual ,
+                                      gufo:Kind .
+
+
+###  http://example.com#ExplanationScope
+:ExplanationScope rdf:type owl:NamedIndividual ,
+                           gufo:Kind .
+
+
+###  http://example.com#Feature
+:Feature rdf:type owl:NamedIndividual ,
+                  gufo:Kind .
+
+
+###  http://example.com#FeatureCharacteristic
+:FeatureCharacteristic rdf:type owl:NamedIndividual ,
+                                gufo:Kind .
+
+
+###  http://example.com#FeatureEncodingCharacteristic
+:FeatureEncodingCharacteristic rdf:type owl:NamedIndividual ,
+                                        gufo:Kind .
+
+
+###  http://example.com#FeatureEnconding
+:FeatureEnconding rdf:type owl:NamedIndividual ,
+                           gufo:EventType .
+
+
+###  http://example.com#FeatureEncondingTechnique
+:FeatureEncondingTechnique rdf:type owl:NamedIndividual ,
+                                    gufo:Kind .
+
+
+###  http://example.com#FeatureScaledData
+:FeatureScaledData rdf:type owl:NamedIndividual ,
+                            gufo:Phase .
+
+
+###  http://example.com#FeatureScaling
+:FeatureScaling rdf:type owl:NamedIndividual ,
+                         gufo:EventType .
+
+
+###  http://example.com#FeatureScalingTechnique
+:FeatureScalingTechnique rdf:type owl:NamedIndividual ,
+                                  gufo:Kind .
+
+
+###  http://example.com#GlobalExplanation
+:GlobalExplanation rdf:type owl:NamedIndividual ,
+                            gufo:SubKind .
+
+
+###  http://example.com#Goal
+:Goal rdf:type owl:NamedIndividual ,
+               gufo:Kind .
+
+
+###  http://example.com#GraphicalEvaluationMeasure
+:GraphicalEvaluationMeasure rdf:type owl:NamedIndividual ,
+                                     gufo:SubKind .
+
+
+###  http://example.com#Graphs
+:Graphs rdf:type owl:NamedIndividual ,
+                 gufo:Kind .
+
+
+###  http://example.com#HasParameter
+:HasParameter rdf:type owl:NamedIndividual ,
+                       gufo:Kind .
+
+
+###  http://example.com#Image
+:Image rdf:type owl:NamedIndividual ,
+                gufo:Kind .
+
+
+###  http://example.com#Implementation
+:Implementation rdf:type owl:NamedIndividual ,
+                         gufo:EventType .
+
+
+###  http://example.com#ImplementationCharacteristic
+:ImplementationCharacteristic rdf:type owl:NamedIndividual ,
+                                       gufo:Kind .
+
+
+###  http://example.com#Implements
+:Implements rdf:type owl:NamedIndividual ,
+                     gufo:Kind .
+
+
+###  http://example.com#ImportLibraries
+:ImportLibraries rdf:type owl:NamedIndividual ,
+                          gufo:EventType .
+
+
+###  http://example.com#ImputationCharacteristics
+:ImputationCharacteristics rdf:type owl:NamedIndividual ,
+                                    gufo:Kind .
+
+
+###  http://example.com#ImputeMissingvalues
+:ImputeMissingvalues rdf:type owl:NamedIndividual ,
+                              gufo:EventType .
+
+
+###  http://example.com#IndependentFeature
+:IndependentFeature rdf:type owl:NamedIndividual ,
+                             gufo:Role .
+
+
+###  http://example.com#InformationCriteria
+:InformationCriteria rdf:type owl:NamedIndividual ,
+                              gufo:SubKind .
+
+
+###  http://example.com#LabeledDataset
+:LabeledDataset rdf:type owl:NamedIndividual ,
+                         gufo:SubKind .
+
+
+###  http://example.com#Library
+:Library rdf:type owl:NamedIndividual ,
+                  gufo:Category .
+
+
+###  http://example.com#LibraryCharacteristic
+:LibraryCharacteristic rdf:type owl:NamedIndividual ,
+                                gufo:Kind .
+
+
+###  http://example.com#LocalExplanation
+:LocalExplanation rdf:type owl:NamedIndividual ,
+                           gufo:SubKind .
+
+
+###  http://example.com#MLAlgorithm
+:MLAlgorithm rdf:type owl:NamedIndividual ,
+                      gufo:SubKind .
+
+
+###  http://example.com#MLAlgorithm_1
+:MLAlgorithm_1 rdf:type owl:NamedIndividual ,
+                        gufo:SubKind .
+
+
+###  http://example.com#MLApproach
+:MLApproach rdf:type owl:NamedIndividual ,
+                     gufo:Kind .
+
+
+###  http://example.com#MLApproachCharacteristic
+:MLApproachCharacteristic rdf:type owl:NamedIndividual ,
+                                   gufo:Kind .
+
+
+###  http://example.com#MLModel
+:MLModel rdf:type owl:NamedIndividual ,
+                  gufo:Kind .
+
+
+###  http://example.com#MLModelEvaluation
+:MLModelEvaluation rdf:type owl:NamedIndividual ,
+                            gufo:EventType .
+
+
+###  http://example.com#MLModelImplementation
+:MLModelImplementation rdf:type owl:NamedIndividual ,
+                                gufo:EventType .
+
+
+###  http://example.com#ModelCharacteristic
+:ModelCharacteristic rdf:type owl:NamedIndividual ,
+                              gufo:Kind .
+
+
+###  http://example.com#ModelEvaluationCharacteristic
+:ModelEvaluationCharacteristic rdf:type owl:NamedIndividual ,
+                                        gufo:Kind .
+
+
+###  http://example.com#ModelEvaluationTechnique
+:ModelEvaluationTechnique rdf:type owl:NamedIndividual ,
+                                   gufo:Kind .
+
+
+###  http://example.com#ModelVisualization
+:ModelVisualization rdf:type owl:NamedIndividual ,
+                             gufo:Category .
+
+
+###  http://example.com#NormalizationTechnique
+:NormalizationTechnique rdf:type owl:NamedIndividual ,
+                                 gufo:Role .
+
+
+###  http://example.com#NumericalExplanation
+:NumericalExplanation rdf:type owl:NamedIndividual ,
+                               gufo:SubKind .
+
+
+###  http://example.com#NumericalFeature
+:NumericalFeature rdf:type owl:NamedIndividual ,
+                           gufo:SubKind .
+
+
+###  http://example.com#NumericalPredictionEvaluationMeasure
+:NumericalPredictionEvaluationMeasure rdf:type owl:NamedIndividual ,
+                                               gufo:SubKind .
+
+
+###  http://example.com#Operation
+:Operation rdf:type owl:NamedIndividual ,
+                    gufo:EventType .
+
+
+###  http://example.com#Output
+:Output rdf:type owl:NamedIndividual ,
+                 gufo:Category .
+
+
+###  http://example.com#Pandas
+:Pandas rdf:type owl:NamedIndividual ,
+                 gufo:SubKind .
+
+
+###  http://example.com#Parameter
+:Parameter rdf:type owl:NamedIndividual ,
+                    gufo:Kind .
+
+
+###  http://example.com#ParameterCharacteristic
+:ParameterCharacteristic rdf:type owl:NamedIndividual ,
+                                  gufo:Kind .
+
+
+###  http://example.com#ParameterSetting
+:ParameterSetting rdf:type owl:NamedIndividual ,
+                           gufo:Kind .
+
+
+###  http://example.com#PosthocApproach
+:PosthocApproach rdf:type owl:NamedIndividual ,
+                          gufo:SubKind .
+
+
+###  http://example.com#PosthocImplementation
+:PosthocImplementation rdf:type owl:NamedIndividual ,
+                                gufo:EventType .
+
+
+###  http://example.com#PredictiveModelEvaluationMeasure
+:PredictiveModelEvaluationMeasure rdf:type owl:NamedIndividual ,
+                                           gufo:SubKind .
+
+
+###  http://example.com#PreprocessingAlgorithm
+:PreprocessingAlgorithm rdf:type owl:NamedIndividual ,
+                                 gufo:SubKind .
+
+
+###  http://example.com#ProcessedData
+:ProcessedData rdf:type owl:NamedIndividual ,
+                        gufo:Phase .
+
+
+###  http://example.com#PythonLibrary
+:PythonLibrary rdf:type owl:NamedIndividual ,
+                        gufo:Kind .
+
+
+###  http://example.com#RegressionAlgorithm
+:RegressionAlgorithm rdf:type owl:NamedIndividual ,
+                              gufo:SubKind .
+
+
+###  http://example.com#Result
+:Result rdf:type owl:NamedIndividual ,
+                 gufo:Kind .
+
+
+###  http://example.com#RulesExplanation
+:RulesExplanation rdf:type owl:NamedIndividual ,
+                           gufo:SubKind .
+
+
+###  http://example.com#SHAP_model_1
+:SHAP_model_1 rdf:type owl:NamedIndividual ,
+                       :XAIModel ;
+              :ModelCharacteristic "test"^^xsd:string .
+
+
+###  http://example.com#ScikitLearn
+:ScikitLearn rdf:type owl:NamedIndividual ,
+                      gufo:SubKind .
+
+
+###  http://example.com#Software
+:Software rdf:type owl:NamedIndividual ,
+                   gufo:Kind .
+
+
+###  http://example.com#SpecifiesMeasure
+:SpecifiesMeasure rdf:type owl:NamedIndividual ,
+                           gufo:Kind .
+
+
+###  http://example.com#SpecifiesModelEvaluation
+:SpecifiesModelEvaluation rdf:type owl:NamedIndividual ,
+                                   gufo:Kind .
+
+
+###  http://example.com#SpecifiesParameter
+:SpecifiesParameter rdf:type owl:NamedIndividual ,
+                             gufo:Kind .
+
+
+###  http://example.com#StandardizationTechnique
+:StandardizationTechnique rdf:type owl:NamedIndividual ,
+                                   gufo:Role .
+
+
+###  http://example.com#SupervisedLearningApproach
+:SupervisedLearningApproach rdf:type owl:NamedIndividual ,
+                                     gufo:SubKind .
+
+
+###  http://example.com#SupervisedLearningApproachImplemenation
+:SupervisedLearningApproachImplemenation rdf:type owl:NamedIndividual ,
+                                                  gufo:EventType .
+
+
+###  http://example.com#TargetEnconding
+:TargetEnconding rdf:type owl:NamedIndividual ,
+                          gufo:Role .
+
+
+###  http://example.com#Test
+:Test rdf:type owl:NamedIndividual ,
+               gufo:EventType .
+
+
+###  http://example.com#TestSet
+:TestSet rdf:type owl:NamedIndividual ,
+                  gufo:Role .
+
+
+###  http://example.com#TextualExplanation
+:TextualExplanation rdf:type owl:NamedIndividual ,
+                             gufo:SubKind .
+
+
+###  http://example.com#Train
+:Train rdf:type owl:NamedIndividual ,
+                gufo:EventType .
+
+
+###  http://example.com#TrainSet
+:TrainSet rdf:type owl:NamedIndividual ,
+                   gufo:Role .
+
+
+###  http://example.com#UncleanedData
+:UncleanedData rdf:type owl:NamedIndividual ,
+                        gufo:Phase .
+
+
+###  http://example.com#UnlabeledDataset
+:UnlabeledDataset rdf:type owl:NamedIndividual ,
+                           gufo:SubKind .
+
+
+###  http://example.com#UnsupervisedLearningApproach
+:UnsupervisedLearningApproach rdf:type owl:NamedIndividual ,
+                                       gufo:SubKind .
+
+
+###  http://example.com#UnsupervisedLearningApproachImplemenation
+:UnsupervisedLearningApproachImplemenation rdf:type owl:NamedIndividual ,
+                                                    gufo:EventType .
+
+
+###  http://example.com#VisualExplanation
+:VisualExplanation rdf:type owl:NamedIndividual ,
+                            gufo:SubKind .
+
+
+###  http://example.com#Vizualization
+:Vizualization rdf:type owl:NamedIndividual ,
+                        gufo:Kind .
+
+
+###  http://example.com#VizualizationCharacteristic
+:VizualizationCharacteristic rdf:type owl:NamedIndividual ,
+                                      gufo:Kind .
+
+
+###  http://example.com#Workflow
+:Workflow rdf:type owl:NamedIndividual ,
+                   gufo:EventType .
+
+
+###  http://example.com#XAIEvaluationMetric
+:XAIEvaluationMetric rdf:type owl:NamedIndividual ,
+                              gufo:Kind .
+
+
+###  http://example.com#XAIMetricCharacteristic
+:XAIMetricCharacteristic rdf:type owl:NamedIndividual ,
+                                  gufo:Kind .
+
+
+###  http://example.com#XAIModel
+:XAIModel rdf:type owl:NamedIndividual ,
+                   gufo:Kind .
+
+
+###  http://example.com#XAIModelCharacteristic
+:XAIModelCharacteristic rdf:type owl:NamedIndividual ,
+                                 gufo:Kind .
+
+
+###  http://example.com#XAIModelEvaluation
+:XAIModelEvaluation rdf:type owl:NamedIndividual ,
+                             gufo:EventType .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:Addresses rdfs:label "Addresses"@en .
+
+
+:Algorithm rdfs:label "Algorithm"@en .
+
+
+:AlgorithmCharacteristic rdfs:label "AlgorithmCharacteristic"@en .
+
+
+:AntehocAprroach rdfs:label "AntehocAprroach"@en .
+
+
+:AntehocImplementation rdfs:label "AntehocImplementation"@en .
+
+
+:Assesses rdfs:label "Assesses"@en .
+
+
+:BlackboxMLmodel rdfs:label "BlackboxMLmodel"@en .
+
+
+:CategoricalFeature rdfs:label "CategoricalFeature"@en .
+
+
+:ClassPredictionEvaluationMeasure rdfs:label "ClassPredictionEvaluationMeasure"@en .
+
+
+:ClassificationAlgorithm rdfs:label "ClassificationAlgorithm"@en .
+
+
+:ClusteringAlgorithm rdfs:label "ClusteringAlgorithm"@en .
+
+
+:ClusteringEvaluationMeasure rdfs:label "ClusteringEvaluationMeasure"@en .
+
+
+:Correlates rdfs:label "Correlates"@en .
+
+
+:CorrelationCharacteristic rdfs:label "CorrelationCharacteristic"@en .
+
+
+:CorrelationCoefficient rdfs:label "CorrelationCoefficient"@en .
+
+
+:Data rdfs:label "Data"@en .
+
+
+:DataCharacteristic rdfs:label "DataCharacteristic"@en .
+
+
+:DataCleaning rdfs:label "DataCleaning"@en .
+
+
+:DataCleaningCharacteristic rdfs:label "DataCleaningCharacteristic"@en .
+
+
+:Dataset rdfs:label "Dataset"@en .
+
+
+:DatasetCharacteristic rdfs:label "DatasetCharacteristic"@en .
+
+
+:DatasetSplit rdfs:label "DatasetSplit"@en .
+
+
+:DependentFeature rdfs:label "DependentFeature"@en .
+
+
+:DropFeaturesrows rdfs:label "DropFeatures/rows"@en .
+
+
+:DummyEnconding rdfs:label "DummyEnconding"@en .
+
+
+:DummyFeature rdfs:label "DummyFeature"@en .
+
+
+:ErrorBasedEvaluationMeasure rdfs:label "ErrorBasedEvaluationMeasure"@en .
+
+
+:EvaluatesExplanationFormat rdfs:label "EvaluatesExplanationFormat"@en .
+
+
+:EvaluationMeasure rdfs:label "EvaluationMeasure"@en .
+
+
+:EvaluationProcedure rdfs:label "EvaluationProcedure"@en .
+
+
+:Experiment rdfs:label "Experiment"@en .
+
+
+:ExperimentCharacteristic rdfs:label "ExperimentCharacteristic"@en .
+
+
+:Explain rdfs:label "Explain"@en .
+
+
+:Explanation rdfs:label "Explanation"@en .
+
+
+:ExplanationApproach rdfs:label "ExplanationApproach"@en .
+
+
+:ExplanationEvaluation rdfs:label "ExplanationEvaluation"@en .
+
+
+:ExplanationFormat rdfs:label "ExplanationFormat"@en .
+
+
+:ExplanationFormatEvaluation rdfs:label "ExplanationFormatEvaluation"@en .
+
+
+:ExplanationScope rdfs:label "ExplanationScope"@en .
+
+
+:Feature rdfs:label "Feature"@en .
+
+
+:FeatureCharacteristic rdfs:label "FeatureCharacteristic"@en .
+
+
+:FeatureEncodingCharacteristic rdfs:label "FeatureEncodingCharacteristic"@en .
+
+
+:FeatureEnconding rdfs:label "FeatureEnconding"@en .
+
+
+:FeatureEncondingTechnique rdfs:label "FeatureEncondingTechnique"@en .
+
+
+:FeatureScaledData rdfs:label "FeatureScaledData"@en .
+
+
+:FeatureScaling rdfs:label "FeatureScaling"@en .
+
+
+:FeatureScalingTechnique rdfs:label "FeatureScalingTechnique"@en .
+
+
+:GlobalExplanation rdfs:label "GlobalExplanation"@en .
+
+
+:Goal rdfs:label "Goal"@en .
+
+
+:GraphicalEvaluationMeasure rdfs:label "GraphicalEvaluationMeasure"@en .
+
+
+:Graphs rdfs:label "Graphs"@en .
+
+
+:HasParameter rdfs:label "HasParameter"@en .
+
+
+:Image rdfs:label "Image"@en .
+
+
+:Implementation rdfs:label "Implementation"@en .
+
+
+:ImplementationCharacteristic rdfs:label "ImplementationCharacteristic"@en .
+
+
+:Implements rdfs:label "Implements"@en .
+
+
+:ImportLibraries rdfs:label "ImportLibraries"@en .
+
+
+:ImputationCharacteristics rdfs:label "ImputationCharacteristics"@en .
+
+
+:ImputeMissingvalues rdfs:label "ImputeMissingvalues"@en .
+
+
+:IndependentFeature rdfs:label "IndependentFeature"@en .
+
+
+:InformationCriteria rdfs:label "InformationCriteria"@en .
+
+
+:LabeledDataset rdfs:label "LabeledDataset"@en .
+
+
+:Library rdfs:label "Library"@en .
+
+
+:LibraryCharacteristic rdfs:label "LibraryCharacteristic"@en .
+
+
+:LocalExplanation rdfs:label "LocalExplanation"@en .
+
+
+:MLAlgorithm rdfs:label "MLAlgorithm"@en .
+
+
+:MLAlgorithm_1 rdfs:label "MLAlgorithm"@en .
+
+
+:MLApproach rdfs:label "MLApproach"@en .
+
+
+:MLApproachCharacteristic rdfs:label "MLApproachCharacteristic"@en .
+
+
+:MLModel rdfs:label "MLModel"@en .
+
+
+:MLModelEvaluation rdfs:label "MLModelEvaluation"@en .
+
+
+:MLModelImplementation rdfs:label "MLModelImplementation"@en .
+
+
+:ModelCharacteristic rdfs:label "ModelCharacteristic"@en .
+
+
+:ModelEvaluationCharacteristic rdfs:label "ModelEvaluationCharacteristic"@en .
+
+
+:ModelEvaluationTechnique rdfs:label "ModelEvaluationTechnique"@en .
+
+
+:ModelVisualization rdfs:label "ModelVisualization"@en .
+
+
+:NormalizationTechnique rdfs:label "NormalizationTechnique"@en .
+
+
+:NumericalExplanation rdfs:label "NumericalExplanation"@en .
+
+
+:NumericalFeature rdfs:label "NumericalFeature"@en .
+
+
+:NumericalPredictionEvaluationMeasure rdfs:label "NumericalPredictionEvaluationMeasure"@en .
+
+
+:Operation rdfs:label "Operation"@en .
+
+
+:Output rdfs:label "Output"@en .
+
+
+:Pandas rdfs:label "Pandas"@en .
+
+
+:Parameter rdfs:label "Parameter"@en .
+
+
+:ParameterCharacteristic rdfs:label "ParameterCharacteristic"@en .
+
+
+:ParameterSetting rdfs:label "ParameterSetting"@en .
+
+
+:PosthocApproach rdfs:label "PosthocApproach"@en .
+
+
+:PosthocImplementation rdfs:label "PosthocImplementation"@en .
+
+
+:PredictiveModelEvaluationMeasure rdfs:label "PredictiveModelEvaluationMeasure"@en .
+
+
+:PreprocessingAlgorithm rdfs:label "PreprocessingAlgorithm"@en .
+
+
+:ProcessedData rdfs:label "ProcessedData"@en .
+
+
+:PythonLibrary rdfs:label "PythonLibrary"@en .
+
+
+:RegressionAlgorithm rdfs:label "RegressionAlgorithm"@en .
+
+
+:Result rdfs:label "Result"@en .
+
+
+:RulesExplanation rdfs:label "RulesExplanation"@en .
+
+
+:ScikitLearn rdfs:label "ScikitLearn"@en .
+
+
+:Software rdfs:label "Software"@en .
+
+
+:SpecifiesMeasure rdfs:label "SpecifiesMeasure"@en .
+
+
+:SpecifiesModelEvaluation rdfs:label "SpecifiesModelEvaluation"@en .
+
+
+:SpecifiesParameter rdfs:label "SpecifiesParameter"@en .
+
+
+:StandardizationTechnique rdfs:label "StandardizationTechnique"@en .
+
+
+:SupervisedLearningApproach rdfs:label "SupervisedLearningApproach"@en .
+
+
+:SupervisedLearningApproachImplemenation rdfs:label "SupervisedLearningApproachImplemenation"@en .
+
+
+:TargetEnconding rdfs:label "TargetEnconding"@en .
+
+
+:Test rdfs:label "Test"@en .
+
+
+:TestSet rdfs:label "TestSet"@en .
+
+
+:TextualExplanation rdfs:label "TextualExplanation"@en .
+
+
+:Train rdfs:label "Train"@en .
+
+
+:TrainSet rdfs:label "TrainSet"@en .
+
+
+:UncleanedData rdfs:label "UncleanedData"@en .
+
+
+:UnlabeledDataset rdfs:label "UnlabeledDataset"@en .
+
+
+:UnsupervisedLearningApproach rdfs:label "UnsupervisedLearningApproach"@en .
+
+
+:UnsupervisedLearningApproachImplemenation rdfs:label "UnsupervisedLearningApproachImplemenation"@en .
+
+
+:VisualExplanation rdfs:label "VisualExplanation"@en .
+
+
+:Vizualization rdfs:label "Vizualization"@en .
+
+
+:VizualizationCharacteristic rdfs:label "VizualizationCharacteristic"@en .
+
+
+:Workflow rdfs:label "Workflow"@en .
+
+
+:XAIEvaluationMetric rdfs:label "XAIEvaluationMetric"@en .
+
+
+:XAIMetricCharacteristic rdfs:label "XAIMetricCharacteristic"@en .
+
+
+:XAIModel rdfs:label "XAIModel"@en .
+
+
+:XAIModelCharacteristic rdfs:label "XAIModelCharacteristic"@en .
+
+
+:XAIModelEvaluation rdfs:label "XAIModelEvaluation"@en .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

@@ -1,0 +1,366 @@
+@prefix : <http://example.com#>.
+@prefix gufo: <http://purl.org/nemo/gufo#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://example.com> rdf:type owl:Ontology;
+    owl:imports gufo:.
+:ExplanationQuality rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "ExplanationQuality"@en.
+:xmlpoExplanationArtifact rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "xmlpo:ExplanationArtifact"@en.
+:xmlpoExplanationEvaluation rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "xmlpo:ExplanationEvaluation"@en.
+:Correctness rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Correctness"@en.
+:Completeness rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Completeness"@en.
+:Consistency rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Consistency"@en.
+:Continuity rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Continuity"@en.
+:Contrastivity rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Contrastivity"@en.
+:CovariateComplexity rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "CovariateComplexity"@en.
+:Compactness rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Compactness"@en.
+:Composition rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Composition"@en.
+:Confidence rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Confidence"@en.
+:Context rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Context"@en.
+:Coherence rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Coherence"@en.
+:Controllability rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Controllability"@en.
+:ContentDimension rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ContentDimension"@en.
+:UserDimension rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "UserDimension"@en.
+:PresentationDimension rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "PresentationDimension"@en.
+:FidelityPerspective rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "FidelityPerspective"@en.
+:ComprehensibilityPerspective rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ComprehensibilityPerspective"@en.
+:KnowledgeLevels rdf:type owl:Class, gufo:AbstractIndividualType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:QualityValue;
+    owl:equivalentClass [
+  rdf:type owl:Class;
+  owl:oneOf (:None :Basic :Intermediate :Advanced :Expert)
+].
+:None rdf:type :KnowledgeLevels;
+    rdf:label "[object Object]".
+:Basic rdf:type :KnowledgeLevels;
+    rdf:label "[object Object]".
+:Intermediate rdf:type :KnowledgeLevels;
+    rdf:label "[object Object]".
+:Advanced rdf:type :KnowledgeLevels;
+    rdf:label "[object Object]".
+:Expert rdf:type :KnowledgeLevels;
+    rdf:label "[object Object]".
+:KnowledgeLevels rdfs:label "KnowledgeLevels"@en.
+:ExplanationAssessmentPerspective rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "ExplanationAssessmentPerspective"@en.
+:ExplanationQualityDimension rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "ExplanationQualityDimension"@en.
+:ExplanationGeneration rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "ExplanationGeneration"@en.
+:xmlpoExplain rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "xmlpo:Explain"@en.
+:XAIStakeholder rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "XAIStakeholder"@en.
+:DecisionSubject rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "DecisionSubject"@en.
+:DomainExpert rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "DomainExpert"@en.
+:TechnicalCreator rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "TechnicalCreator"@en.
+:OperationalUser rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "OperationalUser"@en.
+:OrganisationalComplianceOverseer rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "OrganisationalComplianceOverseer"@en.
+:ResearcherTheorist rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "ResearcherTheorist"@en.
+:Person rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Person"@en.
+:DomainKnowledge rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "DomainKnowledge"@en.
+:TechnicalKnowledge rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "TechnicalKnowledge"@en.
+:ExplanationGoal rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:IntrinsicMode;
+    rdfs:label "ExplanationGoal"@en.
+:ExplanationIntention rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:IntrinsicMode;
+    rdfs:label "ExplanationIntention"@en.
+:ExplanationType rdf:type owl:NamedIndividual;
+    rdfs:subClassOf gufo:ConcreteIndividualType;
+    rdfs:label "ExplanationType"@en.
+:Audit rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Audit"@en.
+:CalibrateTrust rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "CalibrateTrust"@en.
+:Contest rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Contest"@en.
+:DecisionSupport rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "DecisionSupport"@en.
+:Discover rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Discover"@en.
+:Improve rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Improve"@en.
+:Justify rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Justify"@en.
+:Persuade rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Persuade"@en.
+:xmlpoMLModel rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "xmlpo:MLModel"@en.
+:xmlpoXAIModel rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "xmlpo:XAIModel"@en.
+:Knowledge rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:IntrinsicMode;
+    rdfs:label "Knowledge"@en.
+:xmlpoExplanation rdf:type owl:Class, gufo:Category, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "xmlpo:Explanation"@en.
+:Explanation rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "Explanation"@en.
+:xmlpoExplanationScope rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "xmlpo:ExplanationScope"@en.
+:xmlpoExplanationFormat rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "xmlpo:ExplanationFormat"@en.
+:epExplanation rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "ep:Explanation"@en.
+:Continuity rdfs:subClassOf :ExplanationQuality.
+:Contrastivity rdfs:subClassOf :ExplanationQuality.
+:CovariateComplexity rdfs:subClassOf :ExplanationQuality.
+:Compactness rdfs:subClassOf :ExplanationQuality.
+:Composition rdfs:subClassOf :ExplanationQuality.
+:Confidence rdfs:subClassOf :ExplanationQuality.
+:Context rdfs:subClassOf :ExplanationQuality.
+:Coherence rdfs:subClassOf :ExplanationQuality.
+:Controllability rdfs:subClassOf :ExplanationQuality.
+:Correctness rdfs:subClassOf :ExplanationQuality.
+:Completeness rdfs:subClassOf :ExplanationQuality.
+:Consistency rdfs:subClassOf :ExplanationQuality.
+:FidelityPerspective rdfs:subClassOf :ExplanationAssessmentPerspective.
+:ComprehensibilityPerspective rdfs:subClassOf :ExplanationAssessmentPerspective.
+:UserDimension rdfs:subClassOf :ExplanationQualityDimension.
+:ContentDimension rdfs:subClassOf :ExplanationQualityDimension.
+:PresentationDimension rdfs:subClassOf :ExplanationQualityDimension.
+:DecisionSubject rdfs:subClassOf :XAIStakeholder.
+:DomainExpert rdfs:subClassOf :XAIStakeholder.
+:TechnicalCreator rdfs:subClassOf :XAIStakeholder.
+:OperationalUser rdfs:subClassOf :XAIStakeholder.
+:OrganisationalComplianceOverseer rdfs:subClassOf :XAIStakeholder.
+:ResearcherTheorist rdfs:subClassOf :XAIStakeholder.
+:XAIStakeholder rdfs:subClassOf :Person.
+:Audit rdfs:subClassOf :ExplanationGoal.
+:CalibrateTrust rdfs:subClassOf :ExplanationGoal.
+:Contest rdfs:subClassOf :ExplanationGoal.
+:DecisionSupport rdfs:subClassOf :ExplanationGoal.
+:Discover rdfs:subClassOf :ExplanationGoal.
+:Improve rdfs:subClassOf :ExplanationGoal.
+:Justify rdfs:subClassOf :ExplanationGoal.
+:Persuade rdfs:subClassOf :ExplanationGoal.
+:TechnicalKnowledge rdfs:subClassOf :Knowledge.
+:DomainKnowledge rdfs:subClassOf :Knowledge.
+:level rdfs:domain :Knowledge;
+    rdfs:range :KnowledgeLevels;
+    rdf:type owl:ObjectProperty;
+    rdfs:subPropertyOf gufo:hasReifiedQualityValue;
+    rdfs:label "level"@en.
+:fidelityPerspectiveHasConsistency rdf:type owl:ObjectProperty;
+    rdfs:domain :FidelityPerspective;
+    rdfs:range :Consistency;
+    rdfs:label ""@en.
+:fidelityPerspectiveHasCorrectness rdf:type owl:ObjectProperty;
+    rdfs:domain :FidelityPerspective;
+    rdfs:range :Correctness;
+    rdfs:label ""@en.
+:supports_1 rdf:type owl:ObjectProperty;
+    rdfs:domain :FidelityPerspective;
+    rdfs:range :Completeness;
+    rdfs:label "supports"@en.
+:1_9 rdf:type owl:ObjectProperty;
+    rdfs:domain :ComprehensibilityPerspective;
+    rdfs:range :Confidence.
+:1_4 rdf:type owl:ObjectProperty;
+    rdfs:domain :ComprehensibilityPerspective;
+    rdfs:range :Context.
+:1_2 rdf:type owl:ObjectProperty;
+    rdfs:domain :ComprehensibilityPerspective;
+    rdfs:range :CovariateComplexity.
+:supports rdf:type owl:ObjectProperty;
+    rdfs:domain :ComprehensibilityPerspective;
+    rdfs:range :Coherence;
+    rdfs:label "supports"@en.
+:1_5 rdf:type owl:ObjectProperty;
+    rdfs:domain :PresentationDimension;
+    rdfs:range :Compactness.
+:DimensionOf rdf:type owl:ObjectProperty;
+    rdfs:domain :PresentationDimension;
+    rdfs:range :Composition;
+    rdfs:label "DimensionOf"@en.
+:1_7 rdf:type owl:ObjectProperty;
+    rdfs:domain :Confidence;
+    rdfs:range :PresentationDimension.
+:1_1 rdf:type owl:ObjectProperty;
+    rdfs:domain :UserDimension;
+    rdfs:range :Controllability.
+:DimensionOf_1 rdf:type owl:ObjectProperty;
+    rdfs:domain :UserDimension;
+    rdfs:range :Coherence;
+    rdfs:label "DimensionOf"@en.
+:1_10 rdf:type owl:ObjectProperty;
+    rdfs:domain :UserDimension;
+    rdfs:range :Context.
+:1_6 rdf:type owl:ObjectProperty;
+    rdfs:domain :ContentDimension;
+    rdfs:range :Correctness.
+:1_3 rdf:type owl:ObjectProperty;
+    rdfs:domain :ContentDimension;
+    rdfs:range :Completeness.
+:DimensionOf_2 rdf:type owl:ObjectProperty;
+    rdfs:domain :ContentDimension;
+    rdfs:range :Consistency;
+    rdfs:label "DimensionOf"@en.
+:1_8 rdf:type owl:ObjectProperty;
+    rdfs:domain :ContentDimension;
+    rdfs:range :Continuity.
+:1 rdf:type owl:ObjectProperty;
+    rdfs:domain :ContentDimension;
+    rdfs:range :Contrastivity.
+:1_11 rdf:type owl:ObjectProperty;
+    rdfs:domain :ContentDimension;
+    rdfs:range :CovariateComplexity.
+:classifiedAs rdf:type owl:ObjectProperty;
+    rdfs:domain :ExplanationType;
+    rdfs:range :xmlpoExplanationArtifact;
+    rdfs:label "classifiedAs"@en.
+:knowledgeHasPerson rdf:type owl:ObjectProperty;
+    rdfs:domain :Knowledge;
+    rdfs:range :Person.
+:expresses rdf:type owl:ObjectProperty;
+    rdfs:domain :xmlpoExplanationArtifact;
+    rdfs:range :epExplanation;
+    rdfs:label "expresses"@en.
+:xmlpoExplanationEvaluation rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :ExplanationQuality
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :xmlpoExplanationArtifact
+].
+:ExplanationQuality rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :xmlpoExplanationArtifact
+].
+:xmlpoExplanationArtifact rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ExplanationQuality
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:wasCreatedIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ExplanationGeneration
+].
+:ExplanationGeneration rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:wasCreatedIn;
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :xmlpoExplanationArtifact
+].
+:xmlpoExplanationArtifact rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :xmlpoExplain
+].
+:XAIStakeholder rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ExplanationIntention
+].
+:ExplanationIntention rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:externallyDependsOn ];
+  owl:someValuesFrom :ExplanationGoal
+].
+:ExplanationGoal rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:externallyDependsOn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ExplanationIntention
+].
+:xmlpoExplanationArtifact rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf :classifiedAs ];
+  owl:someValuesFrom :ExplanationType
+].
+:ExplanationGoal rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :XAIStakeholder
+].
+:xmlpoMLModel rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:participatedIn;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ExplanationGeneration
+].
+:xmlpoXAIModel rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:participatedIn;
+  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ExplanationGeneration
+].
+:xmlpoExplanationFormat rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :xmlpoExplanationArtifact
+].
+:xmlpoExplanationArtifact rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :xmlpoExplanationFormat
+].
+:xmlpoExplanationScope rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :xmlpoExplanationArtifact
+].
+:xmlpoExplanationArtifact rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :xmlpoExplanationScope
+].

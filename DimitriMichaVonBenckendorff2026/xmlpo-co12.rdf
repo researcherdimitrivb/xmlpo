@@ -1,0 +1,1559 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.com#"
+     xml:base="http://example.com"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:gufo="http://purl.org/nemo/gufo#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:bibo="http://purl.org/ontology/bibo/">
+     <owl:Ontology rdf:about="http://example.com">
+        <owl:imports rdf:resource="http://purl.org/nemo/gufo#"/>
+        <owl:versionIRI rdf:resource="http://example.com/1.0"/>
+        <owl:versionInfo>1.0</owl:versionInfo>
+        <terms:title xml:lang="en">XMLPO Stakeholder-Centred Explainability Extension</terms:title>
+        <terms:description xml:lang="en">[1–2 sentence scope statement]</terms:description>
+        <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <terms:creator>Dimitri Micha von Benckendorff https://orcid.org/0009-0000-3872-8046</terms:creator>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-31</terms:created>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-31</terms:issued>
+        <terms:bibliographicCitation>[thesis / repo citation once available]</terms:bibliographicCitation>
+        <terms:publisher rdf:resource="https://ror.org/006hf6230"/>
+        <terms:source rdf:resource="http://example.org/xmlpo"/>
+        <vann:preferredNamespacePrefix>xmlpo-co12</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>http://example.org/xmlpo#</vann:preferredNamespaceUri>
+        <bibo:doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.xxxx/xxxxx</bibo:doi>
+        <bibo:status>draft</bibo:status>
+    </owl:Ontology>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#label -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#label"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.com#DimensionOf -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#DimensionOf">
+        <rdfs:domain rdf:resource="http://example.com#PresentationDimension"/>
+        <rdfs:range rdf:resource="http://example.com#Composition"/>
+        <rdfs:label xml:lang="en">DimensionOf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#DimensionOf_1 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#DimensionOf_1">
+        <rdfs:domain rdf:resource="http://example.com#UserDimension"/>
+        <rdfs:range rdf:resource="http://example.com#Coherence"/>
+        <rdfs:label xml:lang="en">DimensionOf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#DimensionOf_2 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#DimensionOf_2">
+        <rdfs:domain rdf:resource="http://example.com#ContentDimension"/>
+        <rdfs:range rdf:resource="http://example.com#Consistency"/>
+        <rdfs:label xml:lang="en">DimensionOf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#classifiedAs -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#classifiedAs">
+        <rdfs:domain rdf:resource="http://example.com#ExplanationType"/>
+        <rdfs:range rdf:resource="http://example.com#xmlpoExplanationArtifact"/>
+        <rdfs:label xml:lang="en">classifiedAs</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#expresses -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#expresses">
+        <rdfs:domain rdf:resource="http://example.com#xmlpoExplanationArtifact"/>
+        <rdfs:range rdf:resource="http://example.com#epExplanation"/>
+        <rdfs:label xml:lang="en">expresses</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#fidelityPerspectiveHasConsistency -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#fidelityPerspectiveHasConsistency">
+        <rdfs:domain rdf:resource="http://example.com#FidelityPerspective"/>
+        <rdfs:range rdf:resource="http://example.com#Consistency"/>
+        <rdfs:label xml:lang="en"></rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#fidelityPerspectiveHasCorrectness -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#fidelityPerspectiveHasCorrectness">
+        <rdfs:domain rdf:resource="http://example.com#FidelityPerspective"/>
+        <rdfs:range rdf:resource="http://example.com#Correctness"/>
+        <rdfs:label xml:lang="en"></rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#knowledgeHasPerson -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#knowledgeHasPerson">
+        <rdfs:domain rdf:resource="http://example.com#Knowledge"/>
+        <rdfs:range rdf:resource="http://example.com#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#level -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#level">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#hasReifiedQualityValue"/>
+        <rdfs:domain rdf:resource="http://example.com#Knowledge"/>
+        <rdfs:range rdf:resource="http://example.com#KnowledgeLevels"/>
+        <rdfs:label xml:lang="en">level</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#supports -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#supports">
+        <rdfs:domain rdf:resource="http://example.com#ComprehensibilityPerspective"/>
+        <rdfs:range rdf:resource="http://example.com#Coherence"/>
+        <rdfs:label xml:lang="en">supports</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#supports_1 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#supports_1">
+        <rdfs:domain rdf:resource="http://example.com#FidelityPerspective"/>
+        <rdfs:range rdf:resource="http://example.com#Completeness"/>
+        <rdfs:label xml:lang="en">supports</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#1 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#1">
+        <rdfs:domain rdf:resource="http://example.com#ContentDimension"/>
+        <rdfs:range rdf:resource="http://example.com#Contrastivity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#1_1 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#1_1">
+        <rdfs:domain rdf:resource="http://example.com#UserDimension"/>
+        <rdfs:range rdf:resource="http://example.com#Controllability"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#1_10 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#1_10">
+        <rdfs:domain rdf:resource="http://example.com#UserDimension"/>
+        <rdfs:range rdf:resource="http://example.com#Context"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#1_11 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#1_11">
+        <rdfs:domain rdf:resource="http://example.com#ContentDimension"/>
+        <rdfs:range rdf:resource="http://example.com#CovariateComplexity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#1_2 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#1_2">
+        <rdfs:domain rdf:resource="http://example.com#ComprehensibilityPerspective"/>
+        <rdfs:range rdf:resource="http://example.com#CovariateComplexity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#1_3 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#1_3">
+        <rdfs:domain rdf:resource="http://example.com#ContentDimension"/>
+        <rdfs:range rdf:resource="http://example.com#Completeness"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#1_4 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#1_4">
+        <rdfs:domain rdf:resource="http://example.com#ComprehensibilityPerspective"/>
+        <rdfs:range rdf:resource="http://example.com#Context"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#1_5 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#1_5">
+        <rdfs:domain rdf:resource="http://example.com#PresentationDimension"/>
+        <rdfs:range rdf:resource="http://example.com#Compactness"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#1_6 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#1_6">
+        <rdfs:domain rdf:resource="http://example.com#ContentDimension"/>
+        <rdfs:range rdf:resource="http://example.com#Correctness"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#1_7 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#1_7">
+        <rdfs:domain rdf:resource="http://example.com#Confidence"/>
+        <rdfs:range rdf:resource="http://example.com#PresentationDimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#1_8 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#1_8">
+        <rdfs:domain rdf:resource="http://example.com#ContentDimension"/>
+        <rdfs:range rdf:resource="http://example.com#Continuity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.com#1_9 -->
+
+    <owl:ObjectProperty rdf:about="http://example.com#1_9">
+        <rdfs:domain rdf:resource="http://example.com#ComprehensibilityPerspective"/>
+        <rdfs:range rdf:resource="http://example.com#Confidence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.com#Audit -->
+
+    <owl:Class rdf:about="http://example.com#Audit">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationGoal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#CalibrateTrust -->
+
+    <owl:Class rdf:about="http://example.com#CalibrateTrust">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationGoal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Coherence -->
+
+    <owl:Class rdf:about="http://example.com#Coherence">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Compactness -->
+
+    <owl:Class rdf:about="http://example.com#Compactness">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Completeness -->
+
+    <owl:Class rdf:about="http://example.com#Completeness">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Composition -->
+
+    <owl:Class rdf:about="http://example.com#Composition">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#ComprehensibilityPerspective -->
+
+    <owl:Class rdf:about="http://example.com#ComprehensibilityPerspective">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationAssessmentPerspective"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Confidence -->
+
+    <owl:Class rdf:about="http://example.com#Confidence">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Consistency -->
+
+    <owl:Class rdf:about="http://example.com#Consistency">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#ContentDimension -->
+
+    <owl:Class rdf:about="http://example.com#ContentDimension">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQualityDimension"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Contest -->
+
+    <owl:Class rdf:about="http://example.com#Contest">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationGoal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Context -->
+
+    <owl:Class rdf:about="http://example.com#Context">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Continuity -->
+
+    <owl:Class rdf:about="http://example.com#Continuity">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Contrastivity -->
+
+    <owl:Class rdf:about="http://example.com#Contrastivity">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Controllability -->
+
+    <owl:Class rdf:about="http://example.com#Controllability">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Correctness -->
+
+    <owl:Class rdf:about="http://example.com#Correctness">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#CovariateComplexity -->
+
+    <owl:Class rdf:about="http://example.com#CovariateComplexity">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQuality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#DecisionSubject -->
+
+    <owl:Class rdf:about="http://example.com#DecisionSubject">
+        <rdfs:subClassOf rdf:resource="http://example.com#XAIStakeholder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#DecisionSupport -->
+
+    <owl:Class rdf:about="http://example.com#DecisionSupport">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationGoal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Discover -->
+
+    <owl:Class rdf:about="http://example.com#Discover">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationGoal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#DomainExpert -->
+
+    <owl:Class rdf:about="http://example.com#DomainExpert">
+        <rdfs:subClassOf rdf:resource="http://example.com#XAIStakeholder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#DomainKnowledge -->
+
+    <owl:Class rdf:about="http://example.com#DomainKnowledge">
+        <rdfs:subClassOf rdf:resource="http://example.com#Knowledge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Explanation -->
+
+    <owl:Class rdf:about="http://example.com#Explanation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#ExplanationAssessmentPerspective -->
+
+    <owl:Class rdf:about="http://example.com#ExplanationAssessmentPerspective">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#ExplanationGeneration -->
+
+    <owl:Class rdf:about="http://example.com#ExplanationGeneration">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Event"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/nemo/gufo#wasCreatedIn"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#xmlpoExplanationArtifact"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#ExplanationGoal -->
+
+    <owl:Class rdf:about="http://example.com#ExplanationGoal">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#IntrinsicMode"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/nemo/gufo#externallyDependsOn"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#ExplanationIntention"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/nemo/gufo#inheresIn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#XAIStakeholder"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#ExplanationIntention -->
+
+    <owl:Class rdf:about="http://example.com#ExplanationIntention">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#IntrinsicMode"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/nemo/gufo#externallyDependsOn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://example.com#ExplanationGoal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#ExplanationQuality -->
+
+    <owl:Class rdf:about="http://example.com#ExplanationQuality">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Quality"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/nemo/gufo#inheresIn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#xmlpoExplanationArtifact"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#ExplanationQualityDimension -->
+
+    <owl:Class rdf:about="http://example.com#ExplanationQualityDimension">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#ExplanationType -->
+
+    <owl:Class rdf:about="http://example.com#ExplanationType">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#ConcreteIndividualType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#FidelityPerspective -->
+
+    <owl:Class rdf:about="http://example.com#FidelityPerspective">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationAssessmentPerspective"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Improve -->
+
+    <owl:Class rdf:about="http://example.com#Improve">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationGoal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Justify -->
+
+    <owl:Class rdf:about="http://example.com#Justify">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationGoal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Knowledge -->
+
+    <owl:Class rdf:about="http://example.com#Knowledge">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#IntrinsicMode"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#KnowledgeLevels -->
+
+    <owl:Class rdf:about="http://example.com#KnowledgeLevels">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.com#Advanced"/>
+                    <rdf:Description rdf:about="http://example.com#Basic"/>
+                    <rdf:Description rdf:about="http://example.com#Expert"/>
+                    <rdf:Description rdf:about="http://example.com#Intermediate"/>
+                    <rdf:Description rdf:about="http://example.com#None"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#QualityValue"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#OperationalUser -->
+
+    <owl:Class rdf:about="http://example.com#OperationalUser">
+        <rdfs:subClassOf rdf:resource="http://example.com#XAIStakeholder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#OrganisationalComplianceOverseer -->
+
+    <owl:Class rdf:about="http://example.com#OrganisationalComplianceOverseer">
+        <rdfs:subClassOf rdf:resource="http://example.com#XAIStakeholder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Person -->
+
+    <owl:Class rdf:about="http://example.com#Person">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#Persuade -->
+
+    <owl:Class rdf:about="http://example.com#Persuade">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationGoal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#PresentationDimension -->
+
+    <owl:Class rdf:about="http://example.com#PresentationDimension">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQualityDimension"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#ResearcherTheorist -->
+
+    <owl:Class rdf:about="http://example.com#ResearcherTheorist">
+        <rdfs:subClassOf rdf:resource="http://example.com#XAIStakeholder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#TechnicalCreator -->
+
+    <owl:Class rdf:about="http://example.com#TechnicalCreator">
+        <rdfs:subClassOf rdf:resource="http://example.com#XAIStakeholder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#TechnicalKnowledge -->
+
+    <owl:Class rdf:about="http://example.com#TechnicalKnowledge">
+        <rdfs:subClassOf rdf:resource="http://example.com#Knowledge"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#UserDimension -->
+
+    <owl:Class rdf:about="http://example.com#UserDimension">
+        <rdfs:subClassOf rdf:resource="http://example.com#ExplanationQualityDimension"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#XAIStakeholder -->
+
+    <owl:Class rdf:about="http://example.com#XAIStakeholder">
+        <rdfs:subClassOf rdf:resource="http://example.com#Person"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/nemo/gufo#inheresIn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#ExplanationIntention"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#epExplanation -->
+
+    <owl:Class rdf:about="http://example.com#epExplanation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#xmlpoExplain -->
+
+    <owl:Class rdf:about="http://example.com#xmlpoExplain">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#xmlpoExplanation -->
+
+    <owl:Class rdf:about="http://example.com#xmlpoExplanation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#xmlpoExplanationArtifact -->
+
+    <owl:Class rdf:about="http://example.com#xmlpoExplanationArtifact">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://example.com#classifiedAs"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://example.com#ExplanationType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/nemo/gufo#participatedIn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://example.com#xmlpoExplain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/nemo/gufo#inheresIn"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#ExplanationQuality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/nemo/gufo#inheresIn"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#xmlpoExplanationFormat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/nemo/gufo#inheresIn"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#xmlpoExplanationScope"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/nemo/gufo#wasCreatedIn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#ExplanationGeneration"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#xmlpoExplanationEvaluation -->
+
+    <owl:Class rdf:about="http://example.com#xmlpoExplanationEvaluation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Event"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/nemo/gufo#participatedIn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://example.com#ExplanationQuality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/nemo/gufo#participatedIn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://example.com#xmlpoExplanationArtifact"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#xmlpoExplanationFormat -->
+
+    <owl:Class rdf:about="http://example.com#xmlpoExplanationFormat">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Quality"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/nemo/gufo#inheresIn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#xmlpoExplanationArtifact"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#xmlpoExplanationScope -->
+
+    <owl:Class rdf:about="http://example.com#xmlpoExplanationScope">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Quality"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://purl.org/nemo/gufo#inheresIn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#xmlpoExplanationArtifact"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#xmlpoMLModel -->
+
+    <owl:Class rdf:about="http://example.com#xmlpoMLModel">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/nemo/gufo#participatedIn"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#ExplanationGeneration"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://example.com#xmlpoXAIModel -->
+
+    <owl:Class rdf:about="http://example.com#xmlpoXAIModel">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/nemo/gufo#participatedIn"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://example.com#ExplanationGeneration"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.com#Advanced -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Advanced">
+        <rdf:type rdf:resource="http://example.com#KnowledgeLevels"/>
+        <rdf:label>[object Object]</rdf:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Audit -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Audit">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Basic -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Basic">
+        <rdf:type rdf:resource="http://example.com#KnowledgeLevels"/>
+        <rdf:label>[object Object]</rdf:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#CalibrateTrust -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#CalibrateTrust">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Coherence -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Coherence">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Compactness -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Compactness">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Completeness -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Completeness">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Composition -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Composition">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#ComprehensibilityPerspective -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#ComprehensibilityPerspective">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Confidence -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Confidence">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Consistency -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Consistency">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#ContentDimension -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#ContentDimension">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Contest -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Contest">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Context -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Context">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Continuity -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Continuity">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Contrastivity -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Contrastivity">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Controllability -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Controllability">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Correctness -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Correctness">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#CovariateComplexity -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#CovariateComplexity">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#DecisionSubject -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#DecisionSubject">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#DecisionSupport -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#DecisionSupport">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Discover -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Discover">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#DomainExpert -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#DomainExpert">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#DomainKnowledge -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#DomainKnowledge">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Expert -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Expert">
+        <rdf:type rdf:resource="http://example.com#KnowledgeLevels"/>
+        <rdf:label>[object Object]</rdf:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Explanation -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Explanation">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#ExplanationAssessmentPerspective -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#ExplanationAssessmentPerspective">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#ExplanationGeneration -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#ExplanationGeneration">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#EventType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#ExplanationGoal -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#ExplanationGoal">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#ExplanationIntention -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#ExplanationIntention">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#ExplanationQuality -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#ExplanationQuality">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#ExplanationQualityDimension -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#ExplanationQualityDimension">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#ExplanationType -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#ExplanationType"/>
+    
+
+
+    <!-- http://example.com#FidelityPerspective -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#FidelityPerspective">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Improve -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Improve">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Intermediate -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Intermediate">
+        <rdf:type rdf:resource="http://example.com#KnowledgeLevels"/>
+        <rdf:label>[object Object]</rdf:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Justify -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Justify">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Knowledge -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Knowledge">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#KnowledgeLevels -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#KnowledgeLevels">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#AbstractIndividualType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#None -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#None">
+        <rdf:type rdf:resource="http://example.com#KnowledgeLevels"/>
+        <rdf:label>[object Object]</rdf:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#OperationalUser -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#OperationalUser">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#OrganisationalComplianceOverseer -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#OrganisationalComplianceOverseer">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Person -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Person">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#Persuade -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#Persuade">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#PresentationDimension -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#PresentationDimension">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#ResearcherTheorist -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#ResearcherTheorist">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#TechnicalCreator -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#TechnicalCreator">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#TechnicalKnowledge -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#TechnicalKnowledge">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#UserDimension -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#UserDimension">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#XAIStakeholder -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#XAIStakeholder">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#epExplanation -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#epExplanation">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#xmlpoExplain -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#xmlpoExplain">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#EventType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#xmlpoExplanation -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#xmlpoExplanation">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Category"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#xmlpoExplanationArtifact -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#xmlpoExplanationArtifact">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#xmlpoExplanationEvaluation -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#xmlpoExplanationEvaluation">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#EventType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#xmlpoExplanationFormat -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#xmlpoExplanationFormat">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#xmlpoExplanationScope -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#xmlpoExplanationScope">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#xmlpoMLModel -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#xmlpoMLModel">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.com#xmlpoXAIModel -->
+
+    <owl:NamedIndividual rdf:about="http://example.com#xmlpoXAIModel">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://example.com#Audit">
+        <rdfs:label xml:lang="en">Audit</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#CalibrateTrust">
+        <rdfs:label xml:lang="en">CalibrateTrust</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Coherence">
+        <rdfs:label xml:lang="en">Coherence</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Compactness">
+        <rdfs:label xml:lang="en">Compactness</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Completeness">
+        <rdfs:label xml:lang="en">Completeness</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Composition">
+        <rdfs:label xml:lang="en">Composition</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#ComprehensibilityPerspective">
+        <rdfs:label xml:lang="en">ComprehensibilityPerspective</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Confidence">
+        <rdfs:label xml:lang="en">Confidence</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Consistency">
+        <rdfs:label xml:lang="en">Consistency</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#ContentDimension">
+        <rdfs:label xml:lang="en">ContentDimension</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Contest">
+        <rdfs:label xml:lang="en">Contest</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Context">
+        <rdfs:label xml:lang="en">Context</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Continuity">
+        <rdfs:label xml:lang="en">Continuity</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Contrastivity">
+        <rdfs:label xml:lang="en">Contrastivity</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Controllability">
+        <rdfs:label xml:lang="en">Controllability</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Correctness">
+        <rdfs:label xml:lang="en">Correctness</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#CovariateComplexity">
+        <rdfs:label xml:lang="en">CovariateComplexity</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#DecisionSubject">
+        <rdfs:label xml:lang="en">DecisionSubject</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#DecisionSupport">
+        <rdfs:label xml:lang="en">DecisionSupport</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Discover">
+        <rdfs:label xml:lang="en">Discover</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#DomainExpert">
+        <rdfs:label xml:lang="en">DomainExpert</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#DomainKnowledge">
+        <rdfs:label xml:lang="en">DomainKnowledge</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Explanation">
+        <rdfs:label xml:lang="en">Explanation</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#ExplanationAssessmentPerspective">
+        <rdfs:label xml:lang="en">ExplanationAssessmentPerspective</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#ExplanationGeneration">
+        <rdfs:label xml:lang="en">ExplanationGeneration</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#ExplanationGoal">
+        <rdfs:label xml:lang="en">ExplanationGoal</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#ExplanationIntention">
+        <rdfs:label xml:lang="en">ExplanationIntention</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#ExplanationQuality">
+        <rdfs:label xml:lang="en">ExplanationQuality</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#ExplanationQualityDimension">
+        <rdfs:label xml:lang="en">ExplanationQualityDimension</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#ExplanationType">
+        <rdfs:label xml:lang="en">ExplanationType</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#FidelityPerspective">
+        <rdfs:label xml:lang="en">FidelityPerspective</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Improve">
+        <rdfs:label xml:lang="en">Improve</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Justify">
+        <rdfs:label xml:lang="en">Justify</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Knowledge">
+        <rdfs:label xml:lang="en">Knowledge</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#KnowledgeLevels">
+        <rdfs:label xml:lang="en">KnowledgeLevels</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#OperationalUser">
+        <rdfs:label xml:lang="en">OperationalUser</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#OrganisationalComplianceOverseer">
+        <rdfs:label xml:lang="en">OrganisationalComplianceOverseer</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Person">
+        <rdfs:label xml:lang="en">Person</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#Persuade">
+        <rdfs:label xml:lang="en">Persuade</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#PresentationDimension">
+        <rdfs:label xml:lang="en">PresentationDimension</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#ResearcherTheorist">
+        <rdfs:label xml:lang="en">ResearcherTheorist</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#TechnicalCreator">
+        <rdfs:label xml:lang="en">TechnicalCreator</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#TechnicalKnowledge">
+        <rdfs:label xml:lang="en">TechnicalKnowledge</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#UserDimension">
+        <rdfs:label xml:lang="en">UserDimension</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#XAIStakeholder">
+        <rdfs:label xml:lang="en">XAIStakeholder</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#epExplanation">
+        <rdfs:label xml:lang="en">ep:Explanation</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#xmlpoExplain">
+        <rdfs:label xml:lang="en">xmlpo:Explain</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#xmlpoExplanation">
+        <rdfs:label xml:lang="en">xmlpo:Explanation</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#xmlpoExplanationArtifact">
+        <rdfs:label xml:lang="en">xmlpo:ExplanationArtifact</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#xmlpoExplanationEvaluation">
+        <rdfs:label xml:lang="en">xmlpo:ExplanationEvaluation</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#xmlpoExplanationFormat">
+        <rdfs:label xml:lang="en">xmlpo:ExplanationFormat</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#xmlpoExplanationScope">
+        <rdfs:label xml:lang="en">xmlpo:ExplanationScope</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#xmlpoMLModel">
+        <rdfs:label xml:lang="en">xmlpo:MLModel</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://example.com#xmlpoXAIModel">
+        <rdfs:label xml:lang="en">xmlpo:XAIModel</rdfs:label>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
