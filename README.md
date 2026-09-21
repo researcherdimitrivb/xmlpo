@@ -1,4 +1,4 @@
-# Explainable Machine Learning Pipeline Ontology
+# XMLPO = Explainable Machine Learning Pipeline Ontology
 
 This repo contains relevant files from the Explainable Machine Learning Pipeline Ontology (XMLPO) by Donika Xhani (2023) and its extension by Dimitri Micha von Benckendorff (2026).
 
@@ -11,14 +11,8 @@ The DimitriMichaVonBenckendorff2026 folder contains the extended conceptual mode
 ## Contacts
 This space is administered by:
 
-Dimitri Micha von Benckendorff
-d.m.vonbenckendorff@student.utwente.nl
-GitHub username: researcherdimitrivb
+Dimitri Micha von Benckendorff d.m.vonbenckendorff@student.utwente.nl (GitHub: researcherdimitrivb)
 
-Donika Xhani
-d.xhani@utwente.nl
-GitHub username: DonikaXhani
+Donika Xhani d.xhani@utwente.nl (GitHub: DonikaXhani)
 
-João Luiz Rebelo Moreira
-j.luizrebelomoreira@utwente.nl
-GitHub username: jonimoreira
+João Luiz Rebelo Moreira j.luizrebelomoreira@utwente.nl (GitHub: jonimoreira)
