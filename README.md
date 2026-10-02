@@ -10,11 +10,11 @@ Xhani, D., Rebelo Moreira, J. L., Van Sinderen, M., & Ferreira Pires, L. (2024).
 
 ## Contents
 
-The DonikaXhani2023 folder contains the conceptual model in a .vpp file as well as the ontology in a .ttl file.
+The DonikaXhani2023 folder contains Donika's conceptual model in a .vpp file as well as the ontology in a .ttl file.
 
-The DimitriMichaVonBenckendorff2026 folder contains the extended conceptual model in a .vpp file, the extended ontology in a .ttl file, and the extended ontology with metadata in a .rdf file.
+The DimitriMichaVonBenckendorff2026 folder contains Dimitri's extended conceptual model in a .vpp file, the extended ontology in a .ttl file, and the extended ontology with metadata in a .rdf file.
 
-The SvenVanDerPeet2026 folder contains his internship report with a proof of concept for cardiac autonomic neuropathy screening automation in a .docx file.
+The SvenVanDerPeet2026 folder contains Sven's internship report with a proof of concept for cardiac autonomic neuropathy screening automation in a .pdf file.
 
 ## Contacts
 This space is administered by:
