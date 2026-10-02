@@ -14,6 +14,8 @@ The DonikaXhani2023 folder contains the conceptual model in a .vpp file as well 
 
 The DimitriMichaVonBenckendorff2026 folder contains the extended conceptual model in a .vpp file, the extended ontology in a .ttl file, and the extended ontology with metadata in a .rdf file.
 
+The SvenVanDerPeet2026 folder contains his internship report with a proof of concept for cardiac autonomic neuropathy screening automation in a .docx file.
+
 ## Contacts
 This space is administered by:
 
