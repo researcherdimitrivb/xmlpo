@@ -1,0 +1,725 @@
+@prefix : <http://example.com#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.com#> .
+
+<http://example.com> rdf:type owl:Ontology ;
+                      owl:imports <http://purl.obolibrary.org/obo/ncit/releases/2026-03-19/ncit.owl> ,
+                                  gufo: ,
+                                  <http://www.w3.org/2002/07/owl> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.com#derivedFrom
+:derivedFrom rdf:type owl:ObjectProperty ;
+             rdfs:domain :HemoglobinMeasurementResult ;
+             rdfs:range :HgbFeature ;
+             rdfs:label "derivedFrom"@en .
+
+
+###  http://example.com#hasDisorder
+:hasDisorder rdf:type owl:ObjectProperty ;
+             rdfs:domain :ncitPatient ;
+             rdfs:range :ncitDisorder ;
+             rdfs:label "hasDisorder"@en .
+
+
+###  http://example.com#hasProcedure
+:hasProcedure rdf:type owl:ObjectProperty ;
+              rdfs:domain :CANScreening ;
+              rdfs:range :CART ;
+              rdfs:label "hasProcedure"@en .
+
+
+###  http://example.com#hasScore
+:hasScore rdf:type owl:ObjectProperty ;
+          rdfs:domain :CANRiskScore ;
+          rdfs:range :RiskAssessmentForCAN ;
+          rdfs:label "hasScore"@en .
+
+
+###  http://example.com#hasScore_1
+:hasScore_1 rdf:type owl:ObjectProperty ;
+            rdfs:domain :HealthRiskScore ;
+            rdfs:range :ncitHealthRiskAssessment ;
+            rdfs:label "hasScore"@en .
+
+
+###  http://example.com#manifestationOf
+:manifestationOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain :ncitDiabeticNeuropathy ;
+                 rdfs:range :ncitDiabetesMellitus ;
+                 rdfs:label "manifestationOf"@en .
+
+
+###  http://example.com#ncittreats
+:ncittreats rdf:type owl:ObjectProperty ;
+            rdfs:domain :ncitDiabetesTherapy ;
+            rdfs:range :ncitDiabetesMellitus ;
+            rdfs:label "ncit:treats"@en .
+
+
+###  http://example.com#riskAssessmentForCanHasXmlpoResult
+:riskAssessmentForCanHasXmlpoResult rdf:type owl:ObjectProperty ;
+                                    rdfs:domain :RiskAssessmentForCAN ;
+                                    rdfs:range :xmlpoResult .
+
+
+###  http://example.com#treats
+:treats rdf:type owl:ObjectProperty ;
+        rdfs:domain :ncitNurse ;
+        rdfs:range :ncitPatient .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.com#hasUnit
+:hasUnit rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf gufo:hasQualityValue ,
+                            owl:topDataProperty ;
+         rdfs:domain :HemoglobinMeasurementResult ;
+         rdfs:label "hasUnit"@en .
+
+
+###  http://example.com#hasValue
+:hasValue rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf gufo:hasQualityValue ,
+                             owl:topDataProperty ;
+          rdfs:domain :HemoglobinMeasurementResult ;
+          rdfs:label "hasValue"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.com#CANRiskScore
+:CANRiskScore rdf:type owl:Class ;
+              rdfs:subClassOf :HealthRiskScore .
+
+
+###  http://example.com#CANScreening
+:CANScreening rdf:type owl:Class ;
+              rdfs:subClassOf :ncitScreening ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                               ] ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :RiskAssessmentForCAN
+                              ] .
+
+
+###  http://example.com#CART
+:CART rdf:type owl:Class ;
+      rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#ClinicalFeature
+:ClinicalFeature rdf:type owl:Class ;
+                 rdfs:subClassOf :xmlpoFeature .
+
+
+###  http://example.com#ClinicalMeasurement
+:ClinicalMeasurement rdf:type owl:Class ;
+                     rdfs:subClassOf :Measurement .
+
+
+###  http://example.com#ClinicalMeasurementResult
+:ClinicalMeasurementResult rdf:type owl:Class ;
+                           rdfs:subClassOf :MeasurementResult .
+
+
+###  http://example.com#HealthRiskScore
+:HealthRiskScore rdf:type owl:Class ;
+                 rdfs:subClassOf :ncitClinicalOrResearchAssessmentScore .
+
+
+###  http://example.com#HemoglobinConcentration
+:HemoglobinConcentration rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:Quality ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty gufo:inheresIn ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :ncitHemoglobinMeasurement
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                          ] ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :ncitHemoglobin
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                          ] ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :ncitPatient
+                                         ] .
+
+
+###  http://example.com#HemoglobinMeasurementResult
+:HemoglobinMeasurementResult rdf:type owl:Class ;
+                             rdfs:subClassOf :ClinicalMeasurementResult ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                                              ] ;
+                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :ncitHemoglobinMeasurement
+                                             ] .
+
+
+###  http://example.com#HgbFeature
+:HgbFeature rdf:type owl:Class ;
+            rdfs:subClassOf :ClinicalFeature .
+
+
+###  http://example.com#Measurement
+:Measurement rdf:type owl:Class ;
+             rdfs:subClassOf gufo:Event .
+
+
+###  http://example.com#MeasurementResult
+:MeasurementResult rdf:type owl:Class ;
+                   rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#Person
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#RiskAssessmentForCAN
+:RiskAssessmentForCAN rdf:type owl:Class ;
+                      rdfs:subClassOf :ncitHealthRiskAssessment ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty gufo:wasCreatedIn ;
+                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onClass :CANScreening
+                                      ] .
+
+
+###  http://example.com#ncitClinicalOrResearchAssessmentScore
+:ncitClinicalOrResearchAssessmentScore rdf:type owl:Class ;
+                                       rdfs:subClassOf gufo:Quality .
+
+
+###  http://example.com#ncitDiabetesMellitus
+:ncitDiabetesMellitus rdf:type owl:Class ;
+                      rdfs:subClassOf :ncitMetabolicDisorder .
+
+
+###  http://example.com#ncitDiabetesTherapy
+:ncitDiabetesTherapy rdf:type owl:Class ;
+                     rdfs:subClassOf :ncitTherapeuticTherapy .
+
+
+###  http://example.com#ncitDiabeticAutonomicNeuropathy
+:ncitDiabeticAutonomicNeuropathy rdf:type owl:Class ;
+                                 rdfs:subClassOf :ncitDiabeticNeuropathy ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                                  ] ;
+                                                   owl:someValuesFrom :CANScreening
+                                                 ] .
+
+
+###  http://example.com#ncitDiabeticNeuropathy
+:ncitDiabeticNeuropathy rdf:type owl:Class ;
+                        rdfs:subClassOf :ncitNeuropathy .
+
+
+###  http://example.com#ncitDisorder
+:ncitDisorder rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty owl:sameAs ;
+                                    owl:someValuesFrom <http://purl.obolibrary.org/obo/NCIT_C2991>
+                                  ] ;
+              rdfs:subClassOf gufo:FunctionalComplex ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                               ] ;
+                                owl:someValuesFrom :ncitScreening
+                              ] .
+
+
+###  http://example.com#ncitHealthRiskAssessment
+:ncitHealthRiskAssessment rdf:type owl:Class ;
+                          rdfs:subClassOf gufo:FunctionalComplex ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                                           ] ;
+                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass :ncitScreening
+                                          ] .
+
+
+###  http://example.com#ncitHemoglobin
+:ncitHemoglobin rdf:type owl:Class ;
+                rdfs:subClassOf gufo:FunctionalComplex ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty gufo:inheresIn ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :HemoglobinConcentration
+                                ] .
+
+
+###  http://example.com#ncitHemoglobinMeasurement
+:ncitHemoglobinMeasurement rdf:type owl:Class ;
+                           rdfs:subClassOf :ClinicalMeasurement ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                            ] ;
+                                             owl:someValuesFrom :ncitPatient
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty gufo:wasCreatedIn ;
+                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onClass :HemoglobinMeasurementResult
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                            ] ;
+                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onClass :HemoglobinConcentration
+                                           ] .
+
+
+###  http://example.com#ncitMetabolicDisorder
+:ncitMetabolicDisorder rdf:type owl:Class ;
+                       rdfs:subClassOf :ncitDisorder .
+
+
+###  http://example.com#ncitNeuropathy
+:ncitNeuropathy rdf:type owl:Class ;
+                rdfs:subClassOf :ncitDisorder .
+
+
+###  http://example.com#ncitNurse
+:ncitNurse rdf:type owl:Class ;
+           rdfs:subClassOf :Person ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty gufo:mediates ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :ncitTherapeuticTherapy
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                            ] ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :ncitScreening
+                           ] .
+
+
+###  http://example.com#ncitPatient
+:ncitPatient rdf:type owl:Class ;
+             rdfs:subClassOf :Person ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty gufo:inheresIn ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :HemoglobinConcentration
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty gufo:mediates ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :ncitTherapeuticTherapy
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                              ] ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :ncitScreening
+                             ] .
+
+
+###  http://example.com#ncitScreening
+:ncitScreening rdf:type owl:Class ;
+               rdfs:subClassOf gufo:Event ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty gufo:wasCreatedIn ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :ncitHealthRiskAssessment
+                               ] .
+
+
+###  http://example.com#ncitTherapeuticTherapy
+:ncitTherapeuticTherapy rdf:type owl:Class ;
+                        rdfs:subClassOf gufo:Relator ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty [ owl:inverseOf gufo:mediates
+                                                         ] ;
+                                          owl:someValuesFrom :ncitNurse
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty [ owl:inverseOf gufo:mediates
+                                                         ] ;
+                                          owl:someValuesFrom :ncitPatient
+                                        ] .
+
+
+###  http://example.com#ncitType1DiabetesMellitus
+:ncitType1DiabetesMellitus rdf:type owl:Class ;
+                           rdfs:subClassOf :ncitDiabetesMellitus .
+
+
+###  http://example.com#ncitType2DiabetesMellitus
+:ncitType2DiabetesMellitus rdf:type owl:Class ;
+                           rdfs:subClassOf :ncitDiabetesMellitus .
+
+
+###  http://example.com#xmlpoFeature
+:xmlpoFeature rdf:type owl:Class ;
+              rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#xmlpoMLModel
+:xmlpoMLModel rdf:type owl:Class ;
+              rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://example.com#xmlpoResult
+:xmlpoResult rdf:type owl:Class ;
+             rdfs:subClassOf gufo:FunctionalComplex .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.com#CAN
+:CAN rdf:type owl:NamedIndividual ,
+              :ncitDiabeticAutonomicNeuropathy .
+
+
+###  http://example.com#CANPrescreen1
+:CANPrescreen1 rdf:type owl:NamedIndividual .
+
+
+###  http://example.com#CANPrescreenResult1
+:CANPrescreenResult1 rdf:type owl:NamedIndividual ,
+                              :xmlpoResult ;
+                     gufo:wasCreatedIn :CANPrescreen1 .
+
+
+###  http://example.com#CANRiskScore
+:CANRiskScore rdf:type owl:NamedIndividual ,
+                       gufo:SubKind .
+
+
+###  http://example.com#CANScreening
+:CANScreening rdf:type owl:NamedIndividual ,
+                       gufo:EventType .
+
+
+###  http://example.com#CART
+:CART rdf:type owl:NamedIndividual ,
+               gufo:Kind .
+
+
+###  http://example.com#ClinicalFeature
+:ClinicalFeature rdf:type owl:NamedIndividual ,
+                          gufo:SubKind .
+
+
+###  http://example.com#ClinicalMeasurement
+:ClinicalMeasurement rdf:type owl:NamedIndividual ,
+                              gufo:EventType .
+
+
+###  http://example.com#ClinicalMeasurementResult
+:ClinicalMeasurementResult rdf:type owl:NamedIndividual ,
+                                    gufo:SubKind .
+
+
+###  http://example.com#HealthRiskScore
+:HealthRiskScore rdf:type owl:NamedIndividual ,
+                          gufo:SubKind .
+
+
+###  http://example.com#HemoglobinConcentration
+:HemoglobinConcentration rdf:type owl:NamedIndividual ,
+                                  gufo:Kind .
+
+
+###  http://example.com#HemoglobinMeasurement1
+:HemoglobinMeasurement1 rdf:type owl:NamedIndividual ,
+                                 :ncitHemoglobinMeasurement .
+
+
+###  http://example.com#HemoglobinMeasurementResult
+:HemoglobinMeasurementResult rdf:type owl:NamedIndividual ,
+                                      gufo:SubKind .
+
+
+###  http://example.com#HemoglobinMeasurementResult1
+:HemoglobinMeasurementResult1 rdf:type owl:NamedIndividual ,
+                                       :HemoglobinMeasurementResult ;
+                              gufo:wasCreatedIn :HemoglobinMeasurementResult1 ;
+                              :hasUnit "g/dL"@en ;
+                              :hasValue 13.4 .
+
+
+###  http://example.com#HgbFeature
+:HgbFeature rdf:type owl:NamedIndividual ,
+                     gufo:SubKind .
+
+
+###  http://example.com#Measurement
+:Measurement rdf:type owl:NamedIndividual ,
+                      gufo:EventType .
+
+
+###  http://example.com#MeasurementResult
+:MeasurementResult rdf:type owl:NamedIndividual ,
+                            gufo:Kind .
+
+
+###  http://example.com#Patient1
+:Patient1 rdf:type owl:NamedIndividual ,
+                   :ncitPatient ;
+          :hasDisorder :T2DM ;
+          gufo:participatedIn :HemoglobinMeasurement1 .
+
+
+###  http://example.com#Person
+:Person rdf:type owl:NamedIndividual ,
+                 gufo:Kind .
+
+
+###  http://example.com#RiskAssessmentForCAN
+:RiskAssessmentForCAN rdf:type owl:NamedIndividual ,
+                               gufo:SubKind .
+
+
+###  http://example.com#T2DM
+:T2DM rdf:type owl:NamedIndividual ,
+               :ncitType2DiabetesMellitus ;
+      <http://purl.obolibrary.org/obo/NCIT_R116> :CAN .
+
+
+###  http://example.com#ncitClinicalOrResearchAssessmentScore
+:ncitClinicalOrResearchAssessmentScore rdf:type owl:NamedIndividual ,
+                                                gufo:Kind .
+
+
+###  http://example.com#ncitDiabetesMellitus
+:ncitDiabetesMellitus rdf:type owl:NamedIndividual ,
+                               gufo:Kind .
+
+
+###  http://example.com#ncitDiabetesTherapy
+:ncitDiabetesTherapy rdf:type owl:NamedIndividual ,
+                              gufo:SubKind .
+
+
+###  http://example.com#ncitDiabeticAutonomicNeuropathy
+:ncitDiabeticAutonomicNeuropathy rdf:type owl:NamedIndividual ,
+                                          gufo:SubKind .
+
+
+###  http://example.com#ncitDiabeticNeuropathy
+:ncitDiabeticNeuropathy rdf:type owl:NamedIndividual ,
+                                 gufo:Kind .
+
+
+###  http://example.com#ncitDisorder
+:ncitDisorder rdf:type owl:NamedIndividual ,
+                       gufo:Category .
+
+
+###  http://example.com#ncitHealthRiskAssessment
+:ncitHealthRiskAssessment rdf:type owl:NamedIndividual ,
+                                   gufo:Kind .
+
+
+###  http://example.com#ncitHemoglobin
+:ncitHemoglobin rdf:type owl:NamedIndividual ,
+                         gufo:Kind .
+
+
+###  http://example.com#ncitHemoglobinMeasurement
+:ncitHemoglobinMeasurement rdf:type owl:NamedIndividual ,
+                                    gufo:EventType .
+
+
+###  http://example.com#ncitMetabolicDisorder
+:ncitMetabolicDisorder rdf:type owl:NamedIndividual ,
+                                gufo:Category .
+
+
+###  http://example.com#ncitNeuropathy
+:ncitNeuropathy rdf:type owl:NamedIndividual ,
+                         gufo:Category .
+
+
+###  http://example.com#ncitNurse
+:ncitNurse rdf:type owl:NamedIndividual ,
+                    gufo:Role .
+
+
+###  http://example.com#ncitPatient
+:ncitPatient rdf:type owl:NamedIndividual ,
+                      gufo:Role .
+
+
+###  http://example.com#ncitPrescreen
+:ncitPrescreen rdf:type owl:NamedIndividual ,
+                        gufo:EventType .
+
+
+###  http://example.com#ncitScreening
+:ncitScreening rdf:type owl:NamedIndividual ,
+                        gufo:EventType .
+
+
+###  http://example.com#ncitTherapeuticTherapy
+:ncitTherapeuticTherapy rdf:type owl:NamedIndividual ,
+                                 gufo:Kind .
+
+
+###  http://example.com#ncitType1DiabetesMellitus
+:ncitType1DiabetesMellitus rdf:type owl:NamedIndividual ,
+                                    gufo:SubKind .
+
+
+###  http://example.com#ncitType2DiabetesMellitus
+:ncitType2DiabetesMellitus rdf:type owl:NamedIndividual ,
+                                    gufo:SubKind .
+
+
+###  http://example.com#treats
+:treats rdf:type owl:NamedIndividual ,
+                 gufo:MaterialRelationshipType .
+
+
+###  http://example.com#xmlpoFeature
+:xmlpoFeature rdf:type owl:NamedIndividual ,
+                       gufo:Kind .
+
+
+###  http://example.com#xmlpoMLModel
+:xmlpoMLModel rdf:type owl:NamedIndividual ,
+                       gufo:Kind .
+
+
+###  http://example.com#xmlpoResult
+:xmlpoResult rdf:type owl:NamedIndividual ,
+                      gufo:Kind .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:CANRiskScore rdfs:label "CANRiskScore"@en .
+
+
+:CANScreening rdfs:label "CANScreening"@en .
+
+
+:CART rdfs:label "CART"@en .
+
+
+:ClinicalFeature rdfs:label "ClinicalFeature"@en .
+
+
+:ClinicalMeasurement rdfs:label "ClinicalMeasurement"@en .
+
+
+:ClinicalMeasurementResult rdfs:label "ClinicalMeasurementResult"@en .
+
+
+:HealthRiskScore rdfs:label "HealthRiskScore"@en .
+
+
+:HemoglobinConcentration rdfs:label "HemoglobinConcentration"@en .
+
+
+:HemoglobinMeasurementResult rdfs:label "HemoglobinMeasurementResult"@en .
+
+
+:HgbFeature rdfs:label "HgbFeature"@en .
+
+
+:Measurement rdfs:label "Measurement"@en .
+
+
+:MeasurementResult rdfs:label "MeasurementResult"@en .
+
+
+:Person rdfs:label "Person"@en .
+
+
+:RiskAssessmentForCAN rdfs:label "RiskAssessmentForCAN"@en .
+
+
+:ncitClinicalOrResearchAssessmentScore rdfs:label "ncit:ClinicalOrResearchAssessmentScore"@en .
+
+
+:ncitDiabetesMellitus rdfs:label "ncit:DiabetesMellitus"@en .
+
+
+:ncitDiabetesTherapy rdfs:label "ncit:DiabetesTherapy"@en .
+
+
+:ncitDiabeticAutonomicNeuropathy rdfs:label "ncit:DiabeticAutonomicNeuropathy"@en .
+
+
+:ncitDiabeticNeuropathy rdfs:label "ncit:DiabeticNeuropathy"@en .
+
+
+:ncitDisorder rdfs:label "ncit:Disorder"@en .
+
+
+:ncitHealthRiskAssessment rdfs:label "ncit:HealthRiskAssessment"@en .
+
+
+:ncitHemoglobin rdfs:label "ncit:Hemoglobin"@en .
+
+
+:ncitHemoglobinMeasurement rdfs:label "ncit:HemoglobinMeasurement"@en .
+
+
+:ncitMetabolicDisorder rdfs:label "ncit:MetabolicDisorder"@en .
+
+
+:ncitNeuropathy rdfs:label "ncit:Neuropathy"@en .
+
+
+:ncitNurse rdfs:label "ncit:Nurse"@en .
+
+
+:ncitPatient rdfs:label "ncit:Patient"@en .
+
+
+:ncitScreening rdfs:label "ncit:Screening"@en .
+
+
+:ncitTherapeuticTherapy rdfs:label "ncit:TherapeuticTherapy"@en .
+
+
+:ncitType1DiabetesMellitus rdfs:label "ncit:Type1DiabetesMellitus"@en .
+
+
+:ncitType2DiabetesMellitus rdfs:label "ncit:Type2DiabetesMellitus"@en .
+
+
+:treats rdfs:label "treats"@en .
+
+
+:xmlpoFeature rdfs:label "xmlpo:Feature"@en .
+
+
+:xmlpoMLModel rdfs:label "xmlpo:MLModel"@en .
+
+
+:xmlpoResult rdfs:label "xmlpo:Result"@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

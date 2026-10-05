@@ -1,0 +1,849 @@
+@prefix : <http://example.com#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@base <http://example.com#> .
+
+### XAIStakeholder
+
+:DecisionSubjectProfile rdf:type :DecisionSubject .
+
+:DomainExpertProfile rdf:type :DomainExpert .
+
+:TechnicalCreatorProfile rdf:type :TechnicalCreator .
+
+:OperationalUserProfile rdf:type :OperationalUser .
+
+:OrganisationalComplianceOverseerProfile rdf:type :OrganisationalComplianceOverseer .
+
+:ResearcherTheoristProfile rdf:type :ResearcherTheorist .
+
+
+### Knowledge
+
+:None rdf:type :KnowledgeLevels .
+:Basic rdf:type :KnowledgeLevels .
+:Intermediate rdf:type :KnowledgeLevels .
+:Advanced rdf:type :KnowledgeLevels .
+:Expert rdf:type :KnowledgeLevels .
+
+:DecisionSubjectDomainKnowledge
+    rdf:type :DomainKnowledge ;
+    :level :Basic ;
+    gufo:inheresIn :DecisionSubjectProfile .
+
+:DecisionSubjectTechnicalKnowledge
+    rdf:type :TechnicalKnowledge ;
+    :level :Basic ;
+    gufo:inheresIn :DecisionSubjectProfile .
+
+:DomainExpertDomainKnowledge
+    rdf:type :DomainKnowledge ;
+    :level :Expert ;
+    gufo:inheresIn :DomainExpertProfile .
+
+:DomainExpertTechnicalKnowledge
+    rdf:type :TechnicalKnowledge ;
+    :level :Intermediate ;
+    gufo:inheresIn :DomainExpertProfile .
+
+:TechnicalCreatorDomainKnowledge
+    rdf:type :DomainKnowledge ;
+    :level :Intermediate ;
+    gufo:inheresIn :TechnicalCreatorProfile .
+
+:TechnicalCreatorTechnicalKnowledge
+    rdf:type :TechnicalKnowledge ;
+    :level :Expert ;
+    gufo:inheresIn :TechnicalCreatorProfile .
+
+:OperationalUserDomainKnowledge
+    rdf:type :DomainKnowledge ;
+    :level :Advanced ;
+    gufo:inheresIn :OperationalUserProfile .
+
+:OperationalUserTechnicalKnowledge
+    rdf:type :TechnicalKnowledge ;
+    :level :Intermediate ;
+    gufo:inheresIn :OperationalUserProfile .
+
+:ComplianceDomainKnowledge
+    rdf:type :DomainKnowledge ;
+    :level :Advanced ;
+    gufo:inheresIn :OrganisationalComplianceOverseerProfile .
+
+:ComplianceTechnicalKnowledge
+    rdf:type :TechnicalKnowledge ;
+    :level :Intermediate ;
+    gufo:inheresIn :OrganisationalComplianceOverseerProfile .
+
+:ResearcherDomainKnowledge
+    rdf:type :DomainKnowledge ;
+    :level :Advanced ;
+    gufo:inheresIn :ResearcherTheoristProfile .
+
+:ResearcherTechnicalKnowledge
+    rdf:type :TechnicalKnowledge ;
+    :level :Expert ;
+    gufo:inheresIn :ResearcherTheoristProfile .
+
+
+### Explanation Goals % (replace)
+
+:Audit rdf:type owl:NamedIndividual , :ExplanationGoal .
+
+:CalibrateTrust rdf:type owl:NamedIndividual , :ExplanationGoal .
+
+:Contest rdf:type owl:NamedIndividual , :ExplanationGoal .
+
+:DecisionSupport rdf:type owl:NamedIndividual , :ExplanationGoal .
+
+:Discover rdf:type owl:NamedIndividual , :ExplanationGoal .
+
+:Improve rdf:type owl:NamedIndividual , :ExplanationGoal .
+
+:Justify rdf:type owl:NamedIndividual , :ExplanationGoal .
+
+:Persuade rdf:type owl:NamedIndividual , :ExplanationGoal .
+
+
+### Explanation Types % (replace)
+
+:CaseBased rdf:type owl:NamedIndividual , :ExplanationType .
+
+:Contextual rdf:type owl:NamedIndividual , :ExplanationType .
+
+:Contrastive rdf:type owl:NamedIndividual , :ExplanationType .
+
+:Counterfactual rdf:type owl:NamedIndividual , :ExplanationType .
+
+:Everyday rdf:type owl:NamedIndividual , :ExplanationType .
+
+:Scientific rdf:type owl:NamedIndividual , :ExplanationType .
+
+:SimulationBased rdf:type owl:NamedIndividual , :ExplanationType .
+
+:Statistical rdf:type owl:NamedIndividual , :ExplanationType .
+
+:TraceBased rdf:type owl:NamedIndividual , :ExplanationType .
+
+:Data rdf:type owl:NamedIndividual , :ExplanationType .
+
+:Rationale rdf:type owl:NamedIndividual , :ExplanationType .
+
+:SafetyAndPerformance rdf:type owl:NamedIndividual , :ExplanationType .
+
+:Impact rdf:type owl:NamedIndividual , :ExplanationType .
+
+:Fairness rdf:type owl:NamedIndividual , :ExplanationType .
+
+:Responsibility rdf:type owl:NamedIndividual , :ExplanationType .
+
+
+### Explanation Qualities % Replace (or not)
+
+:Correctness rdf:type owl:NamedIndividual , :ExplanationQuality .
+
+:Completeness rdf:type owl:NamedIndividual , :ExplanationQuality .
+
+:Consistency rdf:type owl:NamedIndividual , :ExplanationQuality .
+
+:Continuity rdf:type owl:NamedIndividual , :ExplanationQuality .
+
+:Contrastivity rdf:type owl:NamedIndividual , :ExplanationQuality .
+
+:CovariateComplexity rdf:type owl:NamedIndividual , :ExplanationQuality .
+
+:Compactness rdf:type owl:NamedIndividual , :ExplanationQuality .
+
+:Composition rdf:type owl:NamedIndividual , :ExplanationQuality .
+
+:Confidence rdf:type owl:NamedIndividual , :ExplanationQuality .
+
+:Context rdf:type owl:NamedIndividual , :ExplanationQuality .
+
+:Coherence rdf:type owl:NamedIndividual , :ExplanationQuality .
+
+:Controllability rdf:type owl:NamedIndividual , :ExplanationQuality .
+
+
+# ExplanationGoalPriority
+
+### Decision Subjects
+
+:DSGoal1 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :DecisionSubjectProfile , :CalibrateTrust ;
+    :rank_2 1 .
+
+:DSGoal2 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :DecisionSubjectProfile , :DecisionSupport ;
+    :rank_2 2 .
+
+:DSGoal3 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :DecisionSubjectProfile , :Contest ;
+    :rank_2 3 .
+
+### Domain Experts
+
+:DEGoal1 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :DomainExpertProfile , :DecisionSupport ;
+    :rank_2 1 .
+
+:DEGoal2 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :DomainExpertProfile , :CalibrateTrust ;
+    :rank_2 2 .
+
+:DEGoal3 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :DomainExpertProfile , :Justify ;
+    :rank_2 3 .
+
+### Technical Creators
+
+:TCGoal1 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :TechnicalCreatorProfile , :Improve ;
+    :rank_2 1 .
+
+:TCGoal2 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :TechnicalCreatorProfile , :Audit ;
+    :rank_2 2 .
+
+:TCGoal3 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :TechnicalCreatorProfile , :Discover ;
+    :rank_2 3 .
+
+### Operational Users
+
+:OUGoal1 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :OperationalUserProfile , :DecisionSupport ;
+    :rank_2 1 .
+
+:OUGoal2 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :OperationalUserProfile , :CalibrateTrust ;
+    :rank_2 2 .
+
+:OUGoal3 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :OperationalUserProfile , :Improve ;
+    :rank_2 3 .
+
+### Organisational Compliance Overseers
+
+:COGoal1 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :Audit ;
+    :rank_2 1 .
+
+:COGoal2 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :Contest ;
+    :rank_2 2 .
+
+:COGoal3 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :CalibrateTrust ;
+    :rank_2 3 .
+
+### Researchers \& Theorists
+
+:RTGoal1 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :ResearchersTheoristProfile , :Discover ;
+    :rank_2 1 .
+
+:RTGoal2 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :ResearchersTheoristProfile , :Improve ;
+    :rank_2 2 .
+
+:RTGoal3 rdf:type :ExplanationGoalPriority ;
+    gufo:mediates :ResearchersTheoristProfile , :Audit ;
+    :rank_2 3 .
+
+
+ # ExplanationIntention
+
+:DecisionSubjectIntention
+    rdf:type :ExplanationIntention ;
+    gufo:inheresIn :DecisionSubjectProfile .
+
+:CalibrateTrust
+    gufo:externallyDependsOn :DecisionSubjectIntention .
+
+:DecisionSupport
+    gufo:externallyDependsOn :DecisionSubjectIntention .
+
+:Contest
+    gufo:externallyDependsOn :DecisionSubjectIntention .
+
+:DomainExpertIntention
+    rdf:type :ExplanationIntention ;
+    gufo:inheresIn :DomainExpertProfile .
+
+:DecisionSupport
+    gufo:externallyDependsOn :DomainExpertIntention .
+
+:CalibrateTrust
+    gufo:externallyDependsOn :DomainExpertIntention .
+
+:Justify
+    gufo:externallyDependsOn :DomainExpertIntention .
+
+:TechnicalCreatorIntention
+    rdf:type :ExplanationIntention ;
+    gufo:inheresIn :TechnicalCreatorProfile .
+
+:Improve
+    gufo:externallyDependsOn :TechnicalCreatorIntention .
+
+:Audit
+    gufo:externallyDependsOn :TechnicalCreatorIntention .
+
+:Discover
+    gufo:externallyDependsOn :TechnicalCreatorIntention .
+
+:OperationalUserIntention
+    rdf:type :ExplanationIntention ;
+    gufo:inheresIn :OperationalUserProfile .
+
+:DecisionSupport
+    gufo:externallyDependsOn :OperationalUserIntention .
+
+:CalibrateTrust
+    gufo:externallyDependsOn :OperationalUserIntention .
+
+:Improve
+    gufo:externallyDependsOn :OperationalUserIntention .
+
+:OrganisationalComplianceOverseerIntention
+    rdf:type :ExplanationIntention ;
+    gufo:inheresIn
+        :OrganisationalComplianceOverseerProfile .
+
+:Audit
+    gufo:externallyDependsOn
+        :OrganisationalComplianceOverseerIntention .
+
+:Contest
+    gufo:externallyDependsOn
+        :OrganisationalComplianceOverseerIntention .
+
+:CalibrateTrust
+    gufo:externallyDependsOn
+        :OrganisationalComplianceOverseerIntention .
+
+:ResearchersTheoristIntention
+    rdf:type :ExplanationIntention ;
+    gufo:inheresIn :ResearchersTheoristProfile .
+
+:Discover
+    gufo:externallyDependsOn
+        :ResearchersTheoristIntention .
+
+:Improve
+    gufo:externallyDependsOn
+        :ResearchersTheoristIntention .
+
+:Audit
+    gufo:externallyDependsOn
+        :ResearchersTheoristIntention .
+
+
+# ExplanationTypePriority
+
+### Decision Subjects
+
+:DSType1 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :DecisionSubjectProfile , :Rationale ;
+    :rank_1 1 .
+
+:DSType2 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :DecisionSubjectProfile , :Everyday ;
+    :rank_1 2 .
+
+:DSType3 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :DecisionSubjectProfile , :Data ;
+    :rank_1 3 .
+
+:DSType4 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :DecisionSubjectProfile , :Impact ;
+    :rank_1 4 .
+
+:DSType5 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :DecisionSubjectProfile , :Counterfactual ;
+    :rank_1 5 .
+
+### Domain Experts
+
+:DEType1 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :DomainExpertProfile , :Rationale ;
+    :rank_1 1 .
+
+:DEType2 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :DomainExpertProfile , :Scientific ;
+    :rank_1 2 .
+
+:DEType3 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :DomainExpertProfile , :Data ;
+    :rank_1 3 .
+
+:DEType4 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :DomainExpertProfile , :TraceBased ;
+    :rank_1 4 .
+
+:DEType5 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :DomainExpertProfile , :Statistical ;
+    :rank_1 5 .
+
+### Technical Creators
+
+:TCType1 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :TechnicalCreatorProfile , :TraceBased ;
+    :rank_1 1 .
+
+:TCType2 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :TechnicalCreatorProfile , :Data ;
+    :rank_1 2 .
+
+:TCType3 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :TechnicalCreatorProfile , :Rationale ;
+    :rank_1 3 .
+
+:TCType4 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :TechnicalCreatorProfile , :SafetyAndPerformance ;
+    :rank_1 4 .
+
+:TCType5 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :TechnicalCreatorProfile , :Scientific ;
+    :rank_1 5 .
+
+### Operational Users
+
+:OUType1 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :OperationalUserProfile , :Rationale ;
+    :rank_1 1 .
+
+:OUType2 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :OperationalUserProfile , :Data ;
+    :rank_1 2 .
+
+:OUType3 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :OperationalUserProfile , :TraceBased ;
+    :rank_1 3 .
+
+:OUType4 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :OperationalUserProfile , :Impact ;
+    :rank_1 4 .
+
+:OUType5 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :OperationalUserProfile , :Contextual ;
+    :rank_1 5 .
+
+### Compliance Overseers
+
+:COType1 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :Responsibility ;
+    :rank_1 1 .
+
+:COType2 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :SafetyAndPerformance ;
+    :rank_1 2 .
+
+:COType3 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :Fairness ;
+    :rank_1 3 .
+
+:COType4 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :Data ;
+    :rank_1 4 .
+
+:COType5 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :Rationale ;
+    :rank_1 5 .
+
+### Researchers \& Theorists
+
+:RTType1 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :ResearchersTheoristProfile , :TraceBased ;
+    :rank_1 1 .
+
+:RTType2 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :ResearchersTheoristProfile , :Scientific ;
+    :rank_1 2 .
+
+:RTType3 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :ResearchersTheoristProfile , :Data ;
+    :rank_1 3 .
+
+:RTType4 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :ResearchersTheoristProfile , :Rationale ;
+    :rank_1 4 .
+
+:RTType5 rdf:type :ExplanationTypePriority ;
+    gufo:mediates :ResearchersTheoristProfile , :SafetyAndPerformance ;
+    :rank_1 5 .
+
+
+# ExplanationQualityPriority
+
+### Decision Subjects
+
+:DSQuality1 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :DecisionSubjectProfile , :Context ;
+    :rank 1 .
+
+:DSQuality2 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :DecisionSubjectProfile , :Coherence ;
+    :rank 2 .
+
+:DSQuality3 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :DecisionSubjectProfile , :CovariateComplexity ;
+    :rank 3 .
+
+### Domain Experts
+
+:DEQuality1 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :DomainExpertProfile , :Context ;
+    :rank 1 .
+
+:DEQuality2 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :DomainExpertProfile , :Coherence ;
+    :rank 2 .
+
+:DEQuality3 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :DomainExpertProfile , :Correctness ;
+    :rank 3 .
+
+### Technical Creators
+
+:TCQuality1 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :TechnicalCreatorProfile , :Completeness ;
+    :rank 1 .
+
+:TCQuality2 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :TechnicalCreatorProfile , :Correctness ;
+    :rank 2 .
+
+:TCQuality3 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :TechnicalCreatorProfile , :Consistency ;
+    :rank 3 .
+
+### Operational Users
+
+:OUQuality1 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :OperationalUserProfile , :Context ;
+    :rank 1 .
+
+:OUQuality2 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :OperationalUserProfile , :Coherence ;
+    :rank 2 .
+
+:OUQuality3 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :OperationalUserProfile , :Confidence ;
+    :rank 3 .
+
+### Organisational Compliance Overseers
+
+:COQuality1 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :Correctness ;
+    :rank 1 .
+
+:COQuality2 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :Completeness ;
+    :rank 2 .
+
+:COQuality3 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :Consistency ;
+    :rank 3 .
+
+### Researchers \& Theorists
+
+:RTQuality1 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :ResearchersTheoristProfile , :Completeness ;
+    :rank 1 .
+
+:RTQuality2 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :ResearchersTheoristProfile , :Correctness ;
+    :rank 2 .
+
+:RTQuality3 rdf:type :ExplanationQualityPriority ;
+    gufo:mediates :ResearchersTheoristProfile , :Consistency ;
+    :rank 3 .
+
+
+# ExplanationModalityPriority
+
+:TextualExplanation rdf:type :ExplanationModality .
+:VisualExplanation rdf:type :ExplanationModality .
+:NumericalExplanation rdf:type :ExplanationModality .
+:RulesExplanation rdf:type :ExplanationModality .
+
+### Decision Subjects
+
+:DSModality1 rdf:type :ExplanationModalityPriority ;
+    gufo:mediates :DecisionSubjectProfile , :TextualExplanation .
+
+:DSModality2 rdf:type :ExplanationModalityPriority ;
+    gufo:mediates :DecisionSubjectProfile , :VisualExplanation .
+
+### Domain Experts
+
+:DEModality1 rdf:type :ExplanationModalityPriority ;
+    gufo:mediates :DomainExpertProfile , :VisualExplanation .
+
+:DEModality2 rdf:type :ExplanationModalityPriority ;
+    gufo:mediates :DomainExpertProfile , :NumericalExplanation .
+
+### Technical Creators
+
+:TCModality1 rdf:type :ExplanationModalityPriority ;
+    gufo:mediates :TechnicalCreatorProfile , :NumericalExplanation .
+
+:TCModality2 rdf:type :ExplanationModalityPriority ;
+    gufo:mediates :TechnicalCreatorProfile , :VisualExplanation .
+
+### Operational Users
+
+:OUModality1 rdf:type :ExplanationModalityPriority ;
+    gufo:mediates :OperationalUserProfile , :VisualExplanation .
+
+:OUModality2 rdf:type :ExplanationModalityPriority ;
+    gufo:mediates :OperationalUserProfile , :TextualExplanation .
+
+### Compliance Overseers
+
+:COModality1 rdf:type :ExplanationModalityPriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :TextualExplanation .
+
+:COModality2 rdf:type :ExplanationModalityPriority ;
+    gufo:mediates :OrganisationalComplianceOverseerProfile , :NumericalExplanation .
+
+### Researchers \& Theorists
+
+:RTModality1 rdf:type :ExplanationModalityPriority ;
+    gufo:mediates :ResearchersTheoristProfile , :NumericalExplanation .
+
+:RTModality2 rdf:type :ExplanationModalityPriority ;
+    gufo:mediates :ResearchersTheoristProfile , :VisualExplanation .
+
+
+# ALigns
+
+### Discover
+
+:DiscoverAligns1 rdf:type :Aligns ;
+    gufo:mediates :Discover , :Data .
+
+:DiscoverAligns2 rdf:type :Aligns ;
+    gufo:mediates :Discover , :Statistical .
+
+:DiscoverAligns3 rdf:type :Aligns ;
+    gufo:mediates :Discover , :Scientific .
+
+:DiscoverAligns4 rdf:type :Aligns ;
+    gufo:mediates :Discover , :Contextual .
+
+### Decision Support
+
+:DecisionSupportAligns1 rdf:type :Aligns ;
+    gufo:mediates :DecisionSupport , :Rationale .
+
+:DecisionSupportAligns2 rdf:type :Aligns ;
+    gufo:mediates :DecisionSupport , :CaseBased .
+
+:DecisionSupportAligns3 rdf:type :Aligns ;
+    gufo:mediates :DecisionSupport , :SimulationBased .
+
+:DecisionSupportAligns4 rdf:type :Aligns ;
+    gufo:mediates :DecisionSupport , :TraceBased .
+
+:DecisionSupportAligns5 rdf:type :Aligns ;
+    gufo:mediates :DecisionSupport , :Contextual .
+
+### Calibrate Trust
+
+:CalibrateTrustAligns1 rdf:type :Aligns ;
+    gufo:mediates :CalibrateTrust , :Statistical .
+
+:CalibrateTrustAligns2 rdf:type :Aligns ;
+    gufo:mediates :CalibrateTrust , :TraceBased .
+
+:CalibrateTrustAligns3 rdf:type :Aligns ;
+    gufo:mediates :CalibrateTrust , :SafetyAndPerformance .
+
+:CalibrateTrustAligns4 rdf:type :Aligns ;
+    gufo:mediates :CalibrateTrust , :Impact .
+
+### Justify
+
+:JustifyAligns1 rdf:type :Aligns ;
+    gufo:mediates :Justify , :Rationale .
+
+:JustifyAligns2 rdf:type :Aligns ;
+    gufo:mediates :Justify , :TraceBased .
+
+:JustifyAligns3 rdf:type :Aligns ;
+    gufo:mediates :Justify , :Scientific .
+
+:JustifyAligns4 rdf:type :Aligns ;
+    gufo:mediates :Justify , :Contextual .
+
+### Audit
+
+:AuditAligns1 rdf:type :Aligns ;
+    gufo:mediates :Audit , :TraceBased .
+
+:AuditAligns2 rdf:type :Aligns ;
+    gufo:mediates :Audit , :Data .
+
+:AuditAligns3 rdf:type :Aligns ;
+    gufo:mediates :Audit , :Responsibility .
+
+:AuditAligns4 rdf:type :Aligns ;
+    gufo:mediates :Audit , :Fairness .
+
+
+# Handles
+
+### Decision Subjects (not numerical)
+
+:DecisionSubjectHandlesText
+    rdf:type :Handles ;
+    gufo:mediates
+        :DecisionSubjectProfile ,
+        :TextualExplanation .
+
+:DecisionSubjectHandlesVisual
+    rdf:type :Handles ;
+    gufo:mediates
+        :DecisionSubjectProfile ,
+        :VisualExplanation .
+
+:DecisionSubjectHandlesRules
+    rdf:type :Handles ;
+    gufo:mediates
+        :DecisionSubjectProfile ,
+        :RulesExplanation .
+
+### Domain Experts
+
+:DomainExpertHandlesText
+    rdf:type :Handles ;
+    gufo:mediates
+        :DomainExpertProfile ,
+        :TextualExplanation .
+
+:DomainExpertHandlesVisual
+    rdf:type :Handles ;
+    gufo:mediates
+        :DomainExpertProfile ,
+        :VisualExplanation .
+
+:DomainExpertHandlesNumerical
+    rdf:type :Handles ;
+    gufo:mediates
+        :DomainExpertProfile ,
+        :NumericalExplanation .
+
+:DomainExpertHandlesRules
+    rdf:type :Handles ;
+    gufo:mediates
+        :DomainExpertProfile ,
+        :RulesExplanation .
+
+### Technical Creators
+
+:TechnicalCreatorHandlesText
+    rdf:type :Handles ;
+    gufo:mediates
+        :TechnicalCreatorProfile ,
+        :TextualExplanation .
+
+:TechnicalCreatorHandlesVisual
+    rdf:type :Handles ;
+    gufo:mediates
+        :TechnicalCreatorProfile ,
+        :VisualExplanation .
+
+:TechnicalCreatorHandlesNumerical
+    rdf:type :Handles ;
+    gufo:mediates
+        :TechnicalCreatorProfile ,
+        :NumericalExplanation .
+
+:TechnicalCreatorHandlesRules
+    rdf:type :Handles ;
+    gufo:mediates
+        :TechnicalCreatorProfile ,
+        :RulesExplanation .
+
+### Operational Users
+
+:OperationalUserHandlesText
+    rdf:type :Handles ;
+    gufo:mediates
+        :OperationalUserProfile ,
+        :TextualExplanation .
+
+:OperationalUserHandlesVisual
+    rdf:type :Handles ;
+    gufo:mediates
+        :OperationalUserProfile ,
+        :VisualExplanation .
+
+:OperationalUserHandlesNumerical
+    rdf:type :Handles ;
+    gufo:mediates
+        :OperationalUserProfile ,
+        :NumericalExplanation .
+
+:OperationalUserHandlesRules
+    rdf:type :Handles ;
+    gufo:mediates
+        :OperationalUserProfile ,
+        :RulesExplanation .
+
+### Organisational Compliance Overseers
+
+:OrganisationalComplianceOverseerHandlesText
+    rdf:type :Handles ;
+    gufo:mediates
+        :OrganisationalComplianceOverseerProfile ,
+        :TextualExplanation .
+
+:OrganisationalComplianceOverseerHandlesVisual
+    rdf:type :Handles ;
+    gufo:mediates
+        :OrganisationalComplianceOverseerProfile ,
+        :VisualExplanation .
+
+:OrganisationalComplianceOverseerHandlesNumerical
+    rdf:type :Handles ;
+    gufo:mediates
+        :OrganisationalComplianceOverseerProfile ,
+        :NumericalExplanation .
+
+:OrganisationalComplianceOverseerHandlesRules
+    rdf:type :Handles ;
+    gufo:mediates
+        :OrganisationalComplianceOverseerProfile ,
+        :RulesExplanation .
+
+### Researchers \& Theorists
+
+:ResearchersTheoristHandlesText
+    rdf:type :Handles ;
+    gufo:mediates
+        :ResearchersTheoristProfile ,
+        :TextualExplanation .
+
+:ResearchersTheoristHandlesVisual
+    rdf:type :Handles ;
+    gufo:mediates
+        :ResearchersTheoristProfile ,
+        :VisualExplanation .
+
+:ResearchersTheoristHandlesNumerical
+    rdf:type :Handles ;
+    gufo:mediates
+        :ResearchersTheoristProfile ,
+        :NumericalExplanation .
+
+:ResearchersTheoristHandlesRules
+    rdf:type :Handles ;
+    gufo:mediates
+        :ResearchersTheoristProfile ,
+        :RulesExplanation .

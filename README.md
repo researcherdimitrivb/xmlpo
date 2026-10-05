@@ -12,9 +12,9 @@ Xhani, D., Rebelo Moreira, J. L., Van Sinderen, M., & Ferreira Pires, L. (2024).
 
 The DonikaXhani2023 folder contains Donika's conceptual model in a .vpp file as well as the ontology in a .ttl file.
 
-The DimitriMichaVonBenckendorff2026 folder contains Dimitri's extended conceptual model in a .vpp file, the extended ontology in a .ttl file, and the extended ontology with metadata in a .rdf file.
+The DimitriMichaVonBenckendorff2026 folder contains Dimitri's extended conceptual model in a xmlpo-co12.vpp file, the extended ontology in a xmlpo-co12.ttl file, and the extended ontology with metadata in a xmlpo-co12.rdf file. Additionally, this folder contains turtle files of the updated xmlpo, operational ontology for the healthcare use case, and instances reflecting the findings from the problem investigation in this study. Furthermore, the use case specific results are saved in six .json files and transformed to triples for the use case specific knowledge graph saved as the can-xai-kg.ttl file. These transformations are presented in the explaining-CAN-screening.ipynb file. Finally, the aforementioned knowledge graph was completed with all classes, properties, and instances from the relevant turtle files saved as the can-xai-kg-all.ttl file.
 
-The SvenVanDerPeet2026 folder contains Sven's internship report with a proof of concept for cardiac autonomic neuropathy screening automation in a .pdf file.
+The SvenVanDerPeet2026 folder contains Sven's internship report with a proof of concept for cardiac autonomic neuropathy screening automation in a .pdf file. The machine learning pipeline developed in this work is also provided as the main_ML_V2.py file that uses data in the GE-71_Data_Summary_Table_final.csv file.
 
 ## Contacts
 This space is administered by:
